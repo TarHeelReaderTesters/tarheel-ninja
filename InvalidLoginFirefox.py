@@ -10,7 +10,7 @@ import time
 class FirefoxInvalidLogin(unittest.TestCase):
 
 	def setUp(self):
-		self.driver = webdriver.Firefox() # Get local session of firefox
+		self.driver = webdriver.Firefox() # Get local session of firefoxz
 		
 	def test_firefox_invalid_login(self):
 		driver = self.driver
