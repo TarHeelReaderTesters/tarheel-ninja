@@ -5,6 +5,8 @@ import os
 import sys
 import time
 
+MAX_WAIT_TIME=30
+
 class Searcher:
 	def __init__(self):
 		chromedriver = "/home/dallara/SeleniumDrivers/chromedriver"
@@ -15,22 +17,20 @@ class Searcher:
 	def run_test(self):
 		"""Runs the book searching test for Tar Heel Reader
 		"""
-		#if(len(sys.argv)!=2):
-    			#print "Incorrect number of parameters!"
-    			#print "Format is: %s <search_query>" % (sys.argv[0],)
-    			#sys.exit(1)
 
+		#Load home page of Tar Heel Reader
 		self._browser.get("http://tarheelreader.org")
 		assert "Tar Heel Reader" in self._browser.title
 
-		time.sleep(2.0)
+		#Click on find book button
 		try:
     			findButton=self._browser.find_element_by_xpath("//a[contains(@href,'/find/')]")
     			findButton.click()
 		except NoSuchElementException:
     			assert 0, "can't find find book button"
 
-		time.sleep(2.0)
+		#Narrow down search options
+		self._browser.implicitly_wait(MAX_WAIT_TIME)
 		self.select_option("//select[contains(@name, 'category')]", "People and Places", "can't find category selection element")
 		self.select_option("//select[contains(@name, 'reviewed')]", "Include unreviewed", "can't find review status selection field")
 		self.select_option("//select[contains(@name, 'audience')]", "Any rating", "can't find rating selection field")
@@ -43,7 +43,8 @@ class Searcher:
 		except NoSuchElementException:
 			assert 0, "can't find search field"
 
-		time.sleep(5.0)
+		#Close browser
+		time.sleep(3.0)
 		self._browser.close()
 	
 	def select_option(self, xpath, textToFind, exceptionString):
