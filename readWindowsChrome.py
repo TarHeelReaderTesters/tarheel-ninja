@@ -9,7 +9,9 @@ MAX_WAIT_TIME=30
 
 class Searcher:
 	def __init__(self):
-		self._browser=webdriver.Firefox()
+		chromedriver = "/home/dallara/SeleniumDrivers/chromedriver"
+                os.environ["webdriver.chrome.driver"] = chromedriver
+                self._browser = webdriver.Chrome(chromedriver)
 		self.run_search_test()
 
 	def run_search_test(self):
