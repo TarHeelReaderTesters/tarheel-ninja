@@ -4,21 +4,13 @@ from selenium.webdriver.common.keys import Keys
 import os
 import sys
 import time
+import unittest
 
 MAX_WAIT_TIME=30
+usingChrome=False
 
-class Searcher:
-	def __init__(self):
-		usingChrome=False
-
-                #Too many input arguments?
-                if(len(sys.argv)>2):
-                        print "Incorrect number of parameters!"
-                        print "Format is: %s [-c]" % (sys.argv[0],)
-                        sys.exit(1)
-                elif(len(sys.argv)==2 and sys.argv[1]=="-c"):
-                        usingChrome=True
-
+class Searcher(unittest.TestCase):
+	def setUp(self):
                 #Figure out what browser we are going to use
                 if(usingChrome):
                         chromedriver = "/home/dallara/SeleniumDrivers/chromedriver"
@@ -27,9 +19,7 @@ class Searcher:
                 else:
                         self._browser=webdriver.Firefox()
 
-		self.run_search_test()
-
-	def run_search_test(self):
+	def test_search(self):
 		"""Runs the book searching test for Tar Heel Reader
 		"""
 
@@ -94,12 +84,13 @@ class Searcher:
 				nextPageLink.click()
 
 			except NoSuchElementException:
-				print "error reading book"
-				break
+				assert 0, "error reading book"
 
-		#Close browser
-		time.sleep(3.0)
-		self._browser.close()
+	def tearDown(self):
+		"""Closes the browser when the program exits
+		"""
+		time.sleep(5.0)
+		self._browser.quit()
 
 	def select_option(self, xpath, textToFind, exceptionString):
 		"""Selects from an arbitrary select element on the search page.
@@ -125,9 +116,18 @@ class Searcher:
 		except NoSuchElementException:
 			assert 0, exceptionString
 
-def main():
-	searcher=Searcher()
-	sys.exit(0)
-
 if __name__=='__main__':
-	main()
+	if(len(sys.argv)>2): #Too many or incorrect input arguments?
+        	print "Incorrect number of parameters!"
+                print "Format is: %s [-c]" % (sys.argv[0],)
+		sys.exit(1)
+        elif(len(sys.argv)==2):
+                if(sys.argv[1]=="-c"):
+                	usingChrome=True
+                else:
+                        print "Error in '%s' parameter!" % (sys.argv[1],)
+                        print "Format is: %s [-c]" % (sys.argv[0],)
+			sys.exit(1)
+
+	del sys.argv[1:]
+	unittest.main()

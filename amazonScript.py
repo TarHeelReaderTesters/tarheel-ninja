@@ -5,21 +5,13 @@ from selenium.webdriver.support.ui import WebDriverWait
 import os
 import sys
 import time
+import unittest
 
 MAX_WAIT_TIME=30
+usingChrome=False
 
-class AmazonExplorer:
-	def __init__(self):
-		usingChrome=False
-
-		#Too many input arguments?
-		if(len(sys.argv)>2):
-        		print "Incorrect number of parameters!"
-        		print "Format is: %s [-c]" % (sys.argv[0],)
-        		sys.exit(1)
-        	elif(len(sys.argv)==2 and sys.argv[1]=="-c"):
-        		usingChrome=True
-
+class AmazonExplorer(unittest.TestCase):
+	def setUp(self):
         	#Figure out what browser we are going to use
         	if(usingChrome):
         		chromedriver = "/home/dallara/SeleniumDrivers/chromedriver"
@@ -28,9 +20,7 @@ class AmazonExplorer:
         	else:
         		self._browser=webdriver.Firefox()
 
-		self.explore_amazon()
-
-	def explore_amazon(self):
+	def test_amazon_exploration(self):
 		"""Goes to amazon.com, looks for a minecraft creeper toy,
 		   and adds it to the shopping cart
 		"""
@@ -48,8 +38,7 @@ class AmazonExplorer:
 			amazonLink.click()
 
 		except NoSuchElementException:
-			print("Can't find amazon link!")
-			self.close_browser(1)
+			assert 0, "Can't find amazon link!"
 
 		#Types in 'creeper' into search box on amazon.com homepage
 		try:
@@ -57,8 +46,7 @@ class AmazonExplorer:
 			searchBox.send_keys("creeper"+Keys.RETURN)
 
 		except NoSuchElementException:
-			print("Can't find amazon search box!")
-			self.close_browser(1)
+			assert 0, "Can't find amazon search box!"
 
 		#Looks for the 'Creeper Plush' toy in the amazon search results
 		try:
@@ -66,8 +54,7 @@ class AmazonExplorer:
 			creeperPlushLink.click()
 
 		except NoSuchElementException:
-			print("Can't find creeper plush link!")
-			self.close_browser(1)
+			assert 0, "Can't find creeper plush link!"
 
 		#Tries to actually add the 'Creeper Plush' toy to our shopping cart
 		try:
@@ -75,21 +62,27 @@ class AmazonExplorer:
 			addToCartButton.click()
 
 		except NoSuchElementException:
-			print("Can't find \'Add to Cart\' button!")
-			self.close_browser(1)
+			assert 0, "Can't find \'Add to Cart\' button!"
 
-		self.close_browser(0)
-
-	def close_browser(self, exit_code):
+	def tearDown(self):
 		"""Closes the browser when the program exits
-		   exit_code--what value the program is exiting with
-		   (depends on whether or not an error occurred)
 		"""
 		time.sleep(5.0)
-		self._browser.close()
-		sys.exit(exit_code)
+		self._browser.quit()
 
 #Starts the program
 if __name__ == '__main__':
-	AmazonExplorer()
-	sys.exit(0)
+        if(len(sys.argv)>2): #Too many or incorrect input arguments?
+        	print "Incorrect number of parameters!"
+                print "Format is: %s [-c]" % (sys.argv[0],)
+		sys.exit(1)
+        elif(len(sys.argv)==2):
+                if(sys.argv[1]=="-c"):
+                	usingChrome=True
+                else:
+                        print "Error in '%s' parameter!" % (sys.argv[1],)
+                        print "Format is: %s [-c]" % (sys.argv[0],)
+			sys.exit(1)
+
+	del sys.argv[1:]
+	unittest.main()
