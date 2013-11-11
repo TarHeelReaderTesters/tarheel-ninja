@@ -8,8 +8,9 @@ import time
 MAX_WAIT_TIME=30
 
 class Searcher:
+
 	def __init__(self):
-		self._browser=webdriver.Firefox()
+		self._browser = webdriver.Remote('http://152.23.47.179:4444/wd/hub', webdriver.DesiredCapabilities.CHROME)
 		self.run_search_test()
 
 	def run_search_test(self):

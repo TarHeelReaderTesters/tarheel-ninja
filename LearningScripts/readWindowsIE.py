@@ -8,10 +8,10 @@ import time
 MAX_WAIT_TIME=30
 
 class Searcher:
+
 	def __init__(self):
-		chromedriver = "/home/dallara/SeleniumDrivers/chromedriver"
-                os.environ["webdriver.chrome.driver"] = chromedriver
-                self._browser = webdriver.Chrome(chromedriver)
+		
+		self._browser = webdriver.Remote('http://192.168.1.143:4444/wd/hub', webdriver.DesiredCapabilities.INTERNETEXPLORER)
 		self.run_search_test()
 
 	def run_search_test(self):
