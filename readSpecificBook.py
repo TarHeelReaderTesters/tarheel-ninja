@@ -235,5 +235,3 @@ if __name__ == '__main__':
         del sys.argv[2:]
 
     unittest.main()
-    
->>>>>>> 5a7a7caf2a98f588bf175ec03bcbf4fca5b247c3
