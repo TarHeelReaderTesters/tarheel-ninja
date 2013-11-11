@@ -18,12 +18,12 @@ class readBook(unittest.TestCase):
             
     def test_readBook(self):
         """Runs the book reading test for Tar Heel Reader
-PRE: Already at title page of book being read
-POST: Entire book has been read, on page where
-user chooses what he/she wants to do next"""
+        PRE: Already at title page of book being read
+        POST: Entire book has been read, on page where
+        user chooses what he/she wants to do next"""
         #Tell the browser to only wait 3 additional seconds so can tell faster when finished reading
         self.searchBook()
-        self._browser.implicitly_wait(3.0)
+        self._browser.implicitly_wait(1.0)
 
         #Read one page at a time of current book
         while(True):
@@ -38,14 +38,14 @@ user chooses what he/she wants to do next"""
 
             except NoSuchElementException:
                 assert 0, "error reading book"
-# print "error reading book"
-# break
+#                print "error reading book"
+#                break
                 
     def searchBook(self):
         """Runs the book searching test for Tar Heel Reader
-                """
+		"""
 
-                #Load home page of Tar Heel Reader
+		#Load home page of Tar Heel Reader
         self._browser.get("http://tarheelreader.org")
         assert "Tar Heel Reader" in self._browser.title
 
@@ -84,15 +84,15 @@ user chooses what he/she wants to do next"""
     def select_option(self, xpath, textToFind, exceptionString):
         """Selects from an arbitrary select element on the search page.
 
-xpath--the select element HTML description that will help the
-browser find that select element
+        xpath--the select element HTML description that will help the
+            browser find that select element
 
-textToFind--the text which the browser is trying to find an
-option for within the select element
+        textToFind--the text which the browser is trying to find an
+                            option for within the select element
 
-exceptionString--the text to display if the select element
-being searched for is not found
-"""        
+        exceptionString--the text to display if the select element
+                being searched for is not found
+        """	
         try:
             selectionElement=self._browser.find_element_by_xpath(xpath)
             options=selectionElement.find_elements_by_tag_name("option")
@@ -110,7 +110,7 @@ being searched for is not found
         print '\n Ran ' + param[0]
         print 'Platform: ' + param[1]
         print 'Browser: ' + param[2]
-        self._browser.close()
+        self._browser.quit()
         
 if __name__ == '__main__':
     param = []
@@ -130,3 +130,4 @@ if __name__ == '__main__':
         del sys.argv[2:]
 
     unittest.main()
+    
