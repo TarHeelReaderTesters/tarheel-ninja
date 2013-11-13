@@ -64,7 +64,7 @@ class InvalidLogin(unittest.TestCase):
                         assert 0, "Invalid pwd test failed"
                 
         def tearDown(self):
-                self.driver.close()
+                self.driver.quit()
                 
 if __name__ == "__main__":
         unittest.main()
