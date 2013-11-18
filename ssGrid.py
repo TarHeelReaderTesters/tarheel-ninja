@@ -40,6 +40,9 @@ class screenshot(unittest.TestCase):
         self._browser.get(param[3])
         self._browser.implicitly_wait(10)
         #time.sleep(10.0)
+	#Load home page of Tar Heel Reader
+        self._browser.get("http://tarheelreader.org/2013/10/22/pandas-can-eat/")
+        time.sleep(10.0)
         self._browser.save_screenshot(name)
         #self._browser.get_screenshot_as_file(name)
         assert "Tar Heel Reader" in self._browser.title
