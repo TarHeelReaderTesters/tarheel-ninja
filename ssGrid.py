@@ -37,8 +37,9 @@ class screenshot(unittest.TestCase):
         
 
 		#Load home page of Tar Heel Reader
-        self._browser.get("http://tarheelreader.org/2013/10/22/pandas-can-eat/")
-        time.sleep(10.0)
+        self._browser.get(param[3])
+        self._browser.implicitly_wait(10)
+        #time.sleep(10.0)
         self._browser.save_screenshot(name)
         #self._browser.get_screenshot_as_file(name)
         assert "Tar Heel Reader" in self._browser.title
@@ -52,7 +53,17 @@ class screenshot(unittest.TestCase):
         
 if __name__ == '__main__':
     param = []
-    if len(sys.argv) == 4:
+    if len(sys.argv) == 5:
+        param.append(sys.argv[0])
+        param.append(sys.argv[1])
+        param.append(sys.argv[2])
+        param.append(sys.argv[3])
+        param.append(sys.argv[4])
+        del sys.argv[1:]
+        del sys.argv[2:]
+        del sys.argv[3:]
+        del sys.argv[4:]
+    else:
         param.append(sys.argv[0])
         param.append(sys.argv[1])
         param.append(sys.argv[2])
@@ -60,12 +71,6 @@ if __name__ == '__main__':
         del sys.argv[1:]
         del sys.argv[2:]
         del sys.argv[3:]
-    else:
-        param.append(sys.argv[0])
-        param.append(sys.argv[1])
-        param.append(sys.argv[2])
-        del sys.argv[1:]
-        del sys.argv[2:]
 
     unittest.main()
     
