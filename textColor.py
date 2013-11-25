@@ -5,26 +5,25 @@ from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 import unittest, time, re
 
-class Untitled(unittest.TestCase):
+class testTextColor(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Firefox()
-        self.driver.implicitly_wait(30)
+        if(param == 3):
+            self._browser = webdriver.Remote(desired_capabilities = {"platform": param[1],"browserName": param[2], "version": param[3]})
+        else:
+            self._browser = webdriver.Remote(desired_capabilities = {"platform": param[1],"browserName": param[2]})
+            
+        self._browser.implicitly_wait(30)
         self.base_url = "http://tarheelreader.org/"
         self.verificationErrors = []
         self.accept_next_alert = True
     
     def test_untitled(self):
-        driver = self.driver
-        # open | /2013/10/22/pandas-can-eat/ | 
-        driver.get(self.base_url + "/2013/10/22/pandas-can-eat/")
-        # click | css=img[alt="Settings"] | 
-        driver.find_element_by_css_selector("img[alt=\"Settings\"]").click()
-        # click | css=span.colors | 
-        driver.find_element_by_css_selector("span.colors").click()
-        # click | css=li.textColors > span | 
-        driver.find_element_by_css_selector("li.textColors > span").click()
-        # click | //li[2]/ul/li[7]/span | 
-        driver.find_element_by_xpath("//li[2]/ul/li[7]/span").click()
+        browser = self._browser
+        browser.get(self.base_url + "/2013/10/22/pandas-can-eat/")
+        browser.find_element_by_css_selector("img[alt=\"Settings\"]").click()
+        browser.find_element_by_css_selector("span.colors").click()
+        browser.find_element_by_css_selector("li.textColors > span").click()
+        browser.find_element_by_xpath("//li[2]/ul/li[7]/span").click()
 
         rgb = driver.find_element_by_xpath("//div[contains(@class,'thr-book-page')]").value_of_css_property('color')
            
@@ -61,4 +60,20 @@ class Untitled(unittest.TestCase):
         self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":
+       param = []
+    if len(sys.argv) == 4:
+        param.append(sys.argv[0])
+        param.append(sys.argv[1])
+        param.append(sys.argv[2])
+        param.append(sys.argv[3])
+        del sys.argv[1:]
+        del sys.argv[2:]
+        del sys.argv[3:]
+    else:
+        param.append(sys.argv[0])
+        param.append(sys.argv[1])
+        param.append(sys.argv[2])
+        del sys.argv[1:]
+        del sys.argv[2:]
+
     unittest.main()
