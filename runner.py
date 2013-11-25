@@ -23,9 +23,19 @@ while(os.path.exists(log)):
 file = open(log, 'w')
 
 #add scripts to run in parallel
-processes.append(Popen ('python ssGrid.py MAC firefox http://tarheelreader.org/2013/11/18/tarheelreadertestbook/',stdout=file, stderr=file, shell=True))
-processes.append(Popen ('python ssGrid.py MAC chrome http://tarheelreader.org/2013/11/18/tarheelreadertestbook/',stdout=file, stderr=file, shell=True))
-processes.append(Popen ('python ssGrid.py MAC safari http://tarheelreader.org/2013/11/18/tarheelreadertestbook/',stdout=file, stderr=file, shell=True))
+processes.append(Popen ('python captureNewPics.py MAC firefox',stdout=file, stderr=file, shell=True))
+processes.append(Popen ('python captureNewPics.py MAC chrome',stdout=file, stderr=file, shell=True))
+processes.append(Popen ('python captureNewPics.py MAC safari',stdout=file, stderr=file, shell=True))
+processes.append(Popen ('python captureBasePics.py MAC firefox',stdout=file, stderr=file, shell=True))
+processes.append(Popen ('python captureBasePics.py MAC chrome',stdout=file, stderr=file, shell=True))
+processes.append(Popen ('python captureBasePics.py MAC safari',stdout=file, stderr=file, shell=True))
+
+processes.append(Popen ('python captureNewPics.py WINDOWS firefox',stdout=file, stderr=file, shell=True))
+processes.append(Popen ('python captureNewPics.py WINDOWS chrome',stdout=file, stderr=file, shell=True))
+processes.append(Popen ('python captureNewPics.py WINDOWS iexplore',stdout=file, stderr=file, shell=True))
+processes.append(Popen ('python captureBasePics.py WINDOWS firefox',stdout=file, stderr=file, shell=True))
+processes.append(Popen ('python captureBasePics.py WINDOWS chrome',stdout=file, stderr=file, shell=True))
+processes.append(Popen ('python captureBasePics.py WINDOWS iexplore',stdout=file, stderr=file, shell=True))
 
 for subprocess in processes:
     subprocess.wait()

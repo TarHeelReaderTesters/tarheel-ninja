@@ -18,26 +18,8 @@ class screenshot(unittest.TestCase):
     def test_screenShot(self):
         """Runs the book searching test for Tar Heel Reader
 		"""
-        self._browser.set_window_size(800,600)
-        self._browser.set_window_position(0,0)
-        #make a directory named 'images'
-        if not os.path.exists('images'):
-            os.makedirs('images')
-        if not os.path.exists('images/base/'):
-            os.makedirs('images/base/')
-        if not os.path.exists('images/base/' + param[1]):
-            os.makedirs('images/base/' + param[1])
-        if not os.path.exists('images/base/' + param[1] +'/' + param[2]):
-            os.makedirs('images/base/' + param[1] +'/' + param[2])
-        
-        url = ['http://tarheelreader.org/2013/11/18/tarheelreadertestbook/', 'http://tarheelreader.org/2013/11/18/tarheelreadertestbook/2/', 'http://tarheelreader.org/2013/11/18/tarheelreadertestbook/3/', 'http://tarheelreader.org/2013/11/18/tarheelreadertestbook/4/', 'http://tarheelreader.org/2013/11/18/tarheelreadertestbook/5/']
-        
-        screenshot_name = ['title', 'page2', 'page3', 'page4', 'page5_japanese']
-        for i in range(5):
-            name = screenshot_name[i] + '.png'
-            self._browser.get(url[i])
-            time.sleep(3.0)
-            self._browser.save_screenshot('images/base/' + param[1] + '/' + param[2] +'/' + name)
+        self._browser.get("http://tarheelreader.org/2013/10/22/pandas-can-eat/")
+        self._browser.get_screenshot_as_file('test.png')
 
 
 		#Load home page of Tar Heel Reader

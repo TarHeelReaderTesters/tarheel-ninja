@@ -4,10 +4,11 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 import unittest, time, re
+import sys
 
 class testTextColor(unittest.TestCase):
     def setUp(self):
-        if(param == 3):
+        if len(param) == 4:
             self._browser = webdriver.Remote(desired_capabilities = {"platform": param[1],"browserName": param[2], "version": param[3]})
         else:
             self._browser = webdriver.Remote(desired_capabilities = {"platform": param[1],"browserName": param[2]})
@@ -17,7 +18,7 @@ class testTextColor(unittest.TestCase):
         self.verificationErrors = []
         self.accept_next_alert = True
     
-    def test_untitled(self):
+    def test_text_color(self):
         browser = self._browser
         browser.get(self.base_url + "/2013/10/22/pandas-can-eat/")
         browser.find_element_by_css_selector("img[alt=\"Settings\"]").click()
@@ -25,7 +26,7 @@ class testTextColor(unittest.TestCase):
         browser.find_element_by_css_selector("li.textColors > span").click()
         browser.find_element_by_xpath("//li[2]/ul/li[7]/span").click()
 
-        rgb = driver.find_element_by_xpath("//div[contains(@class,'thr-book-page')]").value_of_css_property('color')
+        rgb = self._browser.find_element_by_xpath("//div[contains(@class,'thr-book-page')]").value_of_css_property('color')
            
         print rgb
         if rgb == "rgba(255, 255, 255, 1)":
@@ -35,18 +36,18 @@ class testTextColor(unittest.TestCase):
             print "text color values are not equal"
     
     def is_element_present(self, how, what):
-        try: self.driver.find_element(by=how, value=what)
+        try: self._browser.find_element(by=how, value=what)
         except NoSuchElementException, e: return False
         return True
     
     def is_alert_present(self):
-        try: self.driver.switch_to_alert()
+        try: self._browser.switch_to_alert()
         except NoAlertPresentException, e: return False
         return True
     
     def close_alert_and_get_its_text(self):
         try:
-            alert = self.driver.switch_to_alert()
+            alert = self._browser.switch_to_alert()
             alert_text = alert.text
             if self.accept_next_alert:
                 alert.accept()
@@ -56,11 +57,11 @@ class testTextColor(unittest.TestCase):
         finally: self.accept_next_alert = True
     
     def tearDown(self):
-        self.driver.quit()
+        self._browser.quit()
         self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":
-       param = []
+    param = []
     if len(sys.argv) == 4:
         param.append(sys.argv[0])
         param.append(sys.argv[1])

@@ -1,4 +1,5 @@
 import unittest
+from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.keys import Keys
@@ -8,18 +9,17 @@ import time, re, sys
 
 #testing background colors
 class testBackgroundColor(unittest.TestCase):
-       def setUp(self):
-              if(param == 3):
-                     self._browser = webdriver.Remote(desired_capabilities = {"platform": param[1],"browserName": param[2], "version": param[3]})
-              else:
-                     self._browser = webdriver.Remote(desired_capabilities = {"platform": param[1],"browserName": param[2]})
-            
-              self._browser.implicitly_wait(30)
-              self.base_url = "http://tarheelreader.org/"
-              self.verificationErrors = []
-              self.accept_next_alert = True
+        def setUp(self):
+            if len(param) == 4:
+                self._browser = webdriver.Remote(desired_capabilities = {"platform": param[1],"browserName": param[2], "version": param[3]})
+            else:
+                self._browser = webdriver.Remote(desired_capabilities = {"platform": param[1],"browserName": param[2]})
+            self._browser.implicitly_wait(30)
+            self.base_url = "http://tarheelreader.org/"
+            self.verificationErrors = []
+            self.accept_next_alert = True
 
-        def test_background_color(self): 
+        def test_background_color(self):
             browser = self._browser
             browser.get(self.base_url + "/2013/10/22/pandas-can-eat/")
             settings = browser.find_element_by_xpath("//img[contains(@src,'/themeV1/images/settings.png')]")# Find the settings menu
@@ -33,7 +33,7 @@ class testBackgroundColor(unittest.TestCase):
 
 
             rgb = browser.find_element_by_xpath("//div[contains(@class,'thr-book-page')]").value_of_css_property('background-color')
-            browser.quit()
+       
             print rgb
             if rgb == "rgba(255, 0, 255, 1)":
                     print "background color values are equal"
@@ -67,7 +67,7 @@ class testBackgroundColor(unittest.TestCase):
             self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":
-           param = []
+        param = []
         if len(sys.argv) == 4:
             param.append(sys.argv[0])
             param.append(sys.argv[1])

@@ -11,15 +11,11 @@ usingChrome=False
 
 class Searcher(unittest.TestCase):
 	def setUp(self):
-		self.build_up_page_tests()
-
-                #Figure out what browser we are going to use
-                if(usingChrome):
-                        chromedriver = "/home/dallara/SeleniumDrivers/chromedriver"
-                        os.environ["webdriver.chrome.driver"] = chromedriver
-                        self._browser = webdriver.Chrome(chromedriver)
-                else:
-                        self._browser=webdriver.Firefox()
+        	if(len(param) == 4):
+           		 self._browser = webdriver.Remote(desired_capabilities = {"platform": param[1],"browserName": param[2], "version": param[3]})
+        	else:
+            		self._browser = webdriver.Remote(desired_capabilities = {"platform": param[1],"browserName": param[2]})
+        	self.build_up_page_tests()
 
 	def build_up_page_tests(self):
 		try:
@@ -127,17 +123,19 @@ class Searcher(unittest.TestCase):
 		self._browser.quit()
 
 if __name__=='__main__':
-	if(len(sys.argv)>2): #Too many or incorrect input arguments?
-        	print "Incorrect number of parameters!"
-                print "Format is: %s [-c]" % (sys.argv[0],)
-		sys.exit(1)
-        elif(len(sys.argv)==2):
-                if(sys.argv[1]=="-c"):
-                	usingChrome=True
-                else:
-                        print "Error in '%s' parameter!" % (sys.argv[1],)
-                        print "Format is: %s [-c]" % (sys.argv[0],)
-			sys.exit(1)
-
-	del sys.argv[1:]
+    param = []
+    if len(sys.argv) == 4:
+        param.append(sys.argv[0])
+        param.append(sys.argv[1])
+        param.append(sys.argv[2])
+        param.append(sys.argv[3])
+        del sys.argv[1:]
+        del sys.argv[2:]
+        del sys.argv[3:]
+    else:
+        param.append(sys.argv[0])
+        param.append(sys.argv[1])
+        param.append(sys.argv[2])
+        del sys.argv[1:]
+        del sys.argv[2:]
 	unittest.main()

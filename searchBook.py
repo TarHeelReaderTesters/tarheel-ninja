@@ -9,8 +9,9 @@ import unittest
 MAX_WAIT_TIME=30
 
 class searchBook(unittest.TestCase):
+    
     def setUp(self):
-        if(param == 3):
+        if len(param) == 4:
             self._browser = webdriver.Remote(desired_capabilities = {"platform": param[1],"browserName": param[2], "version": param[3]})
         else:
             self._browser = webdriver.Remote(desired_capabilities = {"platform": param[1],"browserName": param[2]})
@@ -87,13 +88,10 @@ if __name__ == '__main__':
         param.append(sys.argv[2])
         param.append(sys.argv[3])
         del sys.argv[1:]
-        del sys.argv[2:]
-        del sys.argv[3:]
     else:
         param.append(sys.argv[0])
         param.append(sys.argv[1])
         param.append(sys.argv[2])
         del sys.argv[1:]
-        del sys.argv[2:]
 
     unittest.main()

@@ -48,7 +48,7 @@ class screenshot(unittest.TestCase):
     #self._browser.get("http://tarheelreader.org/2013/10/22/pandas-can-eat/")
         #self._browser.save_screenshot(name)
         #self._browser.get_screenshot_as_file(name)
-        assert "Tar Heel Reader" in self._browser.title
+        #assert "Tar Heel Reader" in self._browser.title
             
     def tearDown(self):
         time.sleep(5.0)
