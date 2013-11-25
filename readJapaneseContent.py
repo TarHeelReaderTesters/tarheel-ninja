@@ -23,10 +23,10 @@ class Searcher(unittest.TestCase):
 
 	def build_up_page_tests(self):
 		try:
-			f=open('bookLines.txt', 'r')
+			f=open('japaneseBookLines.txt', 'r')
 			self._lines=f.readlines()
 			for i in range(0, len(self._lines)):
-				self._lines[i]=self._lines[i].strip()
+				self._lines[i]=self._lines[i].strip().decode('utf-8')
 			f.close()
 		except Exception:
 			print "Error reading book lines file!"
@@ -44,14 +44,14 @@ class Searcher(unittest.TestCase):
 			 user chooses what he/she wants to do next
 		"""
 
-		self._browser.get("http://tarheelreader.org/2010/08/26/i-like-sonic-cartoons/")
+		self._browser.get("http://tarheelreader.org/2013/03/04/%E3%81%AF%E3%81%98%E3%82%81%E3%81%BE%E3%81%97%E3%81%A6/")
 		self._browser.implicitly_wait(MAX_WAIT_TIME)
 
 		line_number=0
 		error=False
 
 		#Read one page at a time of current book
-		while(line_number<10):
+		while(line_number<11):
 			try:
 				time.sleep(3.0)
 
@@ -69,7 +69,7 @@ class Searcher(unittest.TestCase):
 					else:
 						text_element=text_elements[0]
 						for paragraph in text_elements:
-							if(paragraph.text==str(lineToLookFor)):
+							if(paragraph.text==lineToLookFor):
 								text_element=paragraph
 								print "found!"
 								break
@@ -81,8 +81,8 @@ class Searcher(unittest.TestCase):
 
 				#Make sure title and author on first page of story are correct
 				else:
-					titleToLookFor=str(self._lines[0])
-					authorToLookFor=str(self._lines[1])
+					titleToLookFor=self._lines[0]
+					authorToLookFor=self._lines[1]
 					print "looking for title \'"+titleToLookFor+"\'" 
 					print "looking for author \'"+authorToLookFor+"\'"
 
