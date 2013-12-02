@@ -25,26 +25,25 @@ file = open(log, 'w')
 #add scripts to run in parallel
 
 def scripts():
-    scriptNames: ["login.py", "mainMenu.py", "searchBook.py", "readSpecificBook.py", "readJapaneseContent.py", "captureNewPics.py"]
-
+    scriptNames = ["login.py", "mainMenu.py", "searchBook.py", "readSpecificBook.py", "readJapaneseContent.py", "captureNewPics.py"]
+    for script in scriptNames:
+            print 'Current script :' + script
+            #Mac scripts
+            processes.append(Popen ('python '+script+' MAC firefox',stdout=file, stderr=file, shell=True))
+            processes.append(Popen ('python '+script+' MAC chrome',stdout=file, stderr=file, shell=True))
+            processes.append(Popen ('python '+script+' MAC safari',stdout=file, stderr=file, shell=True))
+            #Windows scripts
+            processes.append(Popen ('python '+script+' WINDOWS iexplore 8',stdout=file, stderr=file, shell=True))
+            processes.append(Popen ('python '+script+' WINDOWS iexplore 10',stdout=file, stderr=file, shell=True))
+               
 
 #login
 #menu functionality
 #search a book
-
 #read a (specific) book
 #read a Japanese book
-
 #take the base screenshots (put this in a separate script)
-
 #take the new screenshots
-processes.append(Popen ('python captureNewPics.py MAC firefox',stdout=file, stderr=file, shell=True))
-processes.append(Popen ('python captureNewPics.py MAC chrome',stdout=file, stderr=file, shell=True))
-processes.append(Popen ('python captureNewPics.py MAC safari',stdout=file, stderr=file, shell=True))
-
-processes.append(Popen ('python captureNewPics.py WINDOWS iexplore 8',stdout=file, stderr=file, shell=True))
-processes.append(Popen ('python captureNewPics.py WINDOWS iexplore 10',stdout=file, stderr=file, shell=True))
-
 #do an image comparison between old and new
 
 
