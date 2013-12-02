@@ -25,7 +25,7 @@ file = open(log, 'w')
 #add scripts to run in parallel
 
 def scripts():
-    scriptNames: ["login.py", "mainMenu.py", "searchBook.py", "readSpecificBook.py", "readJapaneseContent.py", "captureNewPics.py"]
+    scriptNames = ["login.py", "mainMenu.py", "searchBook.py", "readSpecificBook.py", "readJapaneseContent.py", "captureNewPics.py"]
     for script in scriptNames:
             print 'Current script :' + script
             #Mac scripts
