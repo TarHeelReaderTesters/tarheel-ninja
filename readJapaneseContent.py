@@ -17,39 +17,25 @@ class JapaneseContentReader(unittest.TestCase):
                 else:
                         self._browser = webdriver.Remote(desired_capabilities = {"platform": param[1],"browserName": param[2]})
 
+                self.build_up_page_tests()
+
+        def build_up_page_tests(self):
                 try:
                         f=open('japaneseBookLines.txt', 'r')
                         self._lines=f.readlines()
                         for i in range(0, len(self._lines)):
                                 self._lines[i]=self._lines[i].strip().decode('utf-8')
                         f.close()
-                except Exception, e:
-                        print e
+                except Exception:
                         print "Error reading book lines file!"
                         try:
-	                        f.close()
-	                except Exception:
-		                print "Error closing book lines file!"
-	                finally:
-		                sys.exit(1)
+                                f.close()
+                        except Exception:
+                                print "Error closing book lines file!"
+                        finally:
+                                sys.exit(1)
 
-	"""def build_up_page_tests(self):
-		try:
-			f=open('japaneseBookLines.txt', 'r')
-			self._lines=f.readlines()
-			for i in range(0, len(self._lines)):
-				self._lines[i]=self._lines[i].strip().decode('utf-8')
-			f.close()
-		except Exception:
-			print "Error reading book lines file!"
-			try:
-				f.close()
-			except Exception:
-				print "Error closing book lines file!"
-			finally:
-				sys.exit(1)
-    """
-	def test_book_reading(self):
+        def test_book_reading(self):
 		"""Runs the book reading test for Tar Heel Reader
 		   PRE: Already at title page of book being read
 		   POST: Entire book has been read, on page where
@@ -70,23 +56,19 @@ class JapaneseContentReader(unittest.TestCase):
 				#Have we checked the title and author on the first page yet? 
 				if(line_number>=2):
 					lineToLookFor=self._lines[line_number]
-					print "looking for \'"+lineToLookFor+"\'"
 					page_wrap_element=self._browser.find_element_by_xpath("//div[contains(@class, 'page-wrap') and not (contains(@style, 'display:none') or contains(@style, 'display: none') or contains(@style, 'visibility:hidden') or contains(@style, 'visibility: hidden'))]")
 					caption_box_element=page_wrap_element.find_element_by_class_name("thr-caption-box")
 					text_elements=caption_box_element.find_elements_by_xpath("//p[contains(@class, 'VOSay')]")
 
 					if(len(text_elements)==0):
-						print "could not find any text on page %d of book" % (line_number+2)
 						error=True
 					else:
 						text_element=text_elements[0]
 						for paragraph in text_elements:
 							if(paragraph.text==lineToLookFor):
 								text_element=paragraph
-								print "found!"
 								break
 						if(text_element.text!=lineToLookFor):
-							print "wrong text on page %d of book" % (line_number,)
 							error=True
 
 					line_number+=1
@@ -95,26 +77,16 @@ class JapaneseContentReader(unittest.TestCase):
 				else:
 					titleToLookFor=self._lines[0]
 					authorToLookFor=self._lines[1]
-					print "looking for title \'"+titleToLookFor+"\'" 
-					print "looking for author \'"+authorToLookFor+"\'"
 
 					content_wrap=self._browser.find_element_by_xpath("//div[contains(@class, 'content-wrap') and not (contains(@style, 'display:none') or contains(@style, 'display: none') or contains(@style, 'visibility:hidden') or contains(@style, 'visibility: hidden'))]")
 					title_element=content_wrap.find_element_by_class_name("title")
 					author_element=content_wrap.find_element_by_class_name("thr-author")
 
-					if(title_element.text==titleToLookFor):
-						print "correct title found!"
+                                        if(title_element.text!=titleToLookFor):
+                                                error=True
 
-					else:
-						print "wrong title found!"
-						error=True
-
-					if(author_element.text==authorToLookFor):
-						print "correct author found!"
-
-					else:
-						print "wrong author found!"
-						error=True
+                                        if(author_element.text!=authorToLookFor):
+                                                error=True
 
 					line_number=2
 
