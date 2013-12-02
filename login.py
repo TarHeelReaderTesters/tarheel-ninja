@@ -54,8 +54,17 @@ class login(unittest.TestCase):
     def tearDown(self):
 		"""Closes the browser when the program exits
             """
-        
-		time.sleep(5.0)
+        time.sleep(5.0)
+        if len(param) == 4:
+            print '\nTest: ' + param[0]
+            print 'Platform: ' + param[3]
+            print 'Browser: ' + param[4]
+            print 'Version: ' + param[5]
+        else:
+            print len(param)
+            print '\nTest: ' + param[0]
+            print 'Platform: ' + param[3]
+            print 'Browser: ' + param[4]
 		self._browser.quit()
 
 if __name__=='__main__':

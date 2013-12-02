@@ -54,6 +54,17 @@ class MainMenu(unittest.TestCase):
                 assert 0, "Cannot find " + menuName + " button"
                             
     def tearDown(self):
+		time.sleep(5.0)
+        if len(param) == 4:
+            print '\nTest: ' + param[0]
+            print 'Platform: ' + param[3]
+            print 'Browser: ' + param[4]
+            print 'Version: ' + param[5]
+        else:
+            print len(param)
+            print '\nTest: ' + param[0]
+            print 'Platform: ' + param[3]
+            print 'Browser: ' + param[4]
         self._browser.quit()
              
 if __name__ == "__main__":
