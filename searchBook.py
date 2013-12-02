@@ -75,9 +75,16 @@ class searchBook(unittest.TestCase):
             (depends on whether or not an error occurred)
             """
         time.sleep(5.0)
-        print 'Ran ' + param[0]
-        print 'Platform: ' + param[1]
-        print 'Browser: ' + param[2]
+        if len(param) == 4:
+            print '\nTest: ' + param[0]
+            print 'Platform: ' + param[1]
+            print 'Browser: ' + param[2]
+            print 'Version: ' + param[3]
+        else:
+            print len(param)
+            print '\nTest: ' + param[0]
+            print 'Platform: ' + param[1]
+            print 'Browser: ' + param[2]
         self._browser.quit()
         
 if __name__ == '__main__':
