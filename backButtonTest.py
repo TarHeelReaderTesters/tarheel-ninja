@@ -12,14 +12,11 @@ usingChrome=False
 
 class BackButtonTester(unittest.TestCase):
 	def setUp(self):
-                #Figure out what browser we are going to use
-                if(usingChrome):
-                        chromedriver = "/home/dallara/SeleniumDrivers/chromedriver"
-                        os.environ["webdriver.chrome.driver"] = chromedriver
-                        self._browser = webdriver.Chrome(chromedriver)
-                else:
-                        self._browser=webdriver.Firefox()
-
+		if len(param) == 4:
+			self._browser = webdriver.Remote(desired_capabilities = {"platform": param[1],"browserName": param[2], "version": param[3]})
+		else:
+			self._browser = webdriver.Remote(desired_capabilities = {"platform": param[1],"browserName": param[2]})
+		
 	def test_back_button(self):
 		"""Runs the back button test for Tar Heel Reader
 		"""
@@ -41,21 +38,31 @@ class BackButtonTester(unittest.TestCase):
 	def tearDown(self):
 		"""Closes the browser when the program exits
 		"""
-		time.sleep(5.0)
-		self._browser.quit()
+        time.sleep(5.0)
+        if len(param) == 4:
+            print '\nTest: ' + param[0]
+            print 'Platform: ' + param[1]
+            print 'Browser: ' + param[2]
+            print 'Version: ' + param[3]
+        else:
+            print len(param)
+            print '\nTest: ' + param[0]
+            print 'Platform: ' + param[1]
+            print 'Browser: ' + param[2]
+        self._browser.quit()
 
 if __name__=='__main__':
-	if(len(sys.argv)>2): #Too many or incorrect input arguments?
-        	print "Incorrect number of parameters!"
-                print "Format is: %s [-c]" % (sys.argv[0],)
-		sys.exit(1)
-        elif(len(sys.argv)==2):
-                if(sys.argv[1]=="-c"):
-                	usingChrome=True
-                else:
-                        print "Error in '%s' parameter!" % (sys.argv[1],)
-                        print "Format is: %s [-c]" % (sys.argv[0],)
-			sys.exit(1)
+	param = []
+    if len(sys.argv) == 4:
+        param.append(sys.argv[0])
+        param.append(sys.argv[1])
+        param.append(sys.argv[2])
+        param.append(sys.argv[3])
+        del sys.argv[1:]
 
-	del sys.argv[1:]
+    else:
+        param.append(sys.argv[0])
+        param.append(sys.argv[1])
+        param.append(sys.argv[2])
+        del sys.argv[1:]
 	unittest.main()
