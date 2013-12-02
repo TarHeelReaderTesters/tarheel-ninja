@@ -1,0 +1,42 @@
+.
+----------------------------------------------------------------------
+Ran 1 test in 23.940s
+
+OK
+
+Ran captureNewPics.py
+Platform: WINDOWS
+Browser: iexplore
+Version: 8
+.
+----------------------------------------------------------------------
+Ran 1 test in 24.576s
+
+OK
+
+Ran captureNewPics.py
+Platform: MAC
+Browser: safari
+.
+----------------------------------------------------------------------
+Ran 1 test in 26.156s
+
+OK
+
+Ran captureNewPics.py
+Platform: MAC
+Browser: chrome
+.
+----------------------------------------------------------------------
+Ran 1 test in 26.956s
+
+OK
+
+Ran captureNewPics.py
+Platform: MAC
+Browser: firefox
+.
+----------------------------------------------------------------------
+Ran 1 test in 27.536s
+
+OK

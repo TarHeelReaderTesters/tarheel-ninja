@@ -78,7 +78,7 @@ class searchBook(unittest.TestCase):
         print 'Ran ' + param[0]
         print 'Platform: ' + param[1]
         print 'Browser: ' + param[2]
-        self._browser.close()
+        self._browser.quit()
         
 if __name__ == '__main__':
     param = []

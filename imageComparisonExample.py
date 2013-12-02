@@ -15,4 +15,7 @@ if __name__=="__main__":
 	h2=Image.open(str(sys.argv[2])).histogram()
 
 	rms = math.sqrt(reduce(operator.add, map(lambda a,b: (a-b)**2, h1, h2))/len(h1))
-	print rms
+    if rms <= 25:
+        print "images are equal"
+	else:
+        print "images are NOT equal"

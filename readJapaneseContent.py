@@ -7,14 +7,17 @@ import time
 import unittest
 
 MAX_WAIT_TIME=30
-usingChrome=False
+param=[]
 
 class Searcher(unittest.TestCase):
 	def setUp(self):
-        	if(len(param) == 4):
-           		 self._browser = webdriver.Remote(desired_capabilities = {"platform": param[1],"browserName": param[2], "version": param[3]})
+            	global param
+            	#check How many arguments were passed in (OS Browser Version) or (OS Browser)
+		if len(param) == 4:
+           		self._browser = webdriver.Remote(desired_capabilities = {"platform": param[1],"browserName": param[2], "version": param[3]})
         	else:
             		self._browser = webdriver.Remote(desired_capabilities = {"platform": param[1],"browserName": param[2]})
+            
         	self.build_up_page_tests()
 
 	def build_up_page_tests(self):
@@ -119,23 +122,35 @@ class Searcher(unittest.TestCase):
 	def tearDown(self):
 		"""Closes the browser when the program exits
 		"""
-		time.sleep(5.0)
-		self._browser.quit()
+        global param
+        time.sleep(5.0)
+
+        if len(param) == 4:
+            print '\nTest: ' + param[0]
+            print 'Platform: ' + param[1]
+            print 'Browser: ' + param[2]
+            print 'Version: ' + param[3]
+        else:
+            print len(param)
+            print '\nTest: ' + param[0]
+            print 'Platform: ' + param[1]
+            print 'Browser: ' + param[2]
+        self._browser.quit()
 
 if __name__=='__main__':
-    param = []
+    global param
+    
     if len(sys.argv) == 4:
         param.append(sys.argv[0])
         param.append(sys.argv[1])
         param.append(sys.argv[2])
         param.append(sys.argv[3])
         del sys.argv[1:]
-        del sys.argv[2:]
-        del sys.argv[3:]
+
     else:
         param.append(sys.argv[0])
         param.append(sys.argv[1])
         param.append(sys.argv[2])
         del sys.argv[1:]
-        del sys.argv[2:]
+        
 	unittest.main()

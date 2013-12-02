@@ -10,7 +10,7 @@ MAX_WAIT_TIME=30
 
 class readBook(unittest.TestCase):
     def setUp(self):
-        if(param == 3):
+        if len(param) == 4:
             self._browser = webdriver.Remote(desired_capabilities = {"platform": param[1],"browserName": param[2], "version": param[3]})
         else:
             self._browser = webdriver.Remote(desired_capabilities = {"platform": param[1],"browserName": param[2]})
@@ -107,9 +107,15 @@ class readBook(unittest.TestCase):
             
     def tearDown(self):
         time.sleep(5.0)
-        print '\n Ran ' + param[0]
-        print 'Platform: ' + param[1]
-        print 'Browser: ' + param[2]
+        if len(param) == 4:
+            print '\nTest: ' + param[0]
+            print 'Platform: ' + param[1]
+            print 'Browser: ' + param[2]
+            print 'Version: ' + param[3]
+        else:
+            print '\nTest: ' + param[0]
+            print 'Platform: ' + param[1]
+            print 'Browser: ' + param[2]
         self._browser.quit()
         
 if __name__ == '__main__':

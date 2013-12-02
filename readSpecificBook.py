@@ -7,137 +7,95 @@ import time
 import unittest
 
 MAX_WAIT_TIME=30
-usingChrome=False
 
-class Searcher(unittest.TestCase):
-	def setUp(self):
-		self.build_up_page_tests()
+class readBook(unittest.TestCase):
+    def setUp(self):
+        if len(param) == 4:
+            self._browser = webdriver.Remote(desired_capabilities = {"platform": param[1],"browserName": param[2], "version": param[3]})
+        else:
+            self._browser = webdriver.Remote(desired_capabilities = {"platform": param[1],"browserName": param[2]})
+    
+            
+    def test_readBook(self):
+        """Runs the book reading test for Tar Heel Reader
+        PRE: Already at title page of book being read
+        POST: Entire book has been read, on page where
+        user chooses what he/she wants to do next"""
+        #Tell the browser to only wait 3 additional seconds so can tell faster when finished reading
+        self.searchBook()
+        self._browser.implicitly_wait(1.0)
 
-                #Figure out what browser we are going to use
-                if(usingChrome):
-                        chromedriver = "/home/dallara/SeleniumDrivers/chromedriver"
-                        os.environ["webdriver.chrome.driver"] = chromedriver
-                        self._browser = webdriver.Chrome(chromedriver)
-                else:
-                        self._browser=webdriver.Firefox()
+        #Read one page at a time of current book
+        while(True):
+            try:
+                readAgainElements=self._browser.find_elements_by_xpath("//li[contains(@data-speech, 'again')]")
 
-	def build_up_page_tests(self):
-		try:
-			f=open('bookLines.txt', 'r')
-			self._lines=f.readlines()
-			for i in range(0, len(self._lines)):
-				self._lines[i]=self._lines[i].strip()
-			f.close()
-		except Exception:
-			print "Error reading book lines file!"
-			try:
-				f.close()
-			except Exception:
-				print "Error closing book lines file!"
-			finally:
-				sys.exit(1)
+                if(len(readAgainElements)>0):
+                    break
 
-	def test_book_reading(self):
-		"""Runs the book reading test for Tar Heel Reader
-		   PRE: Already at title page of book being read
-		   POST: Entire book has been read, on page where
-			 user chooses what he/she wants to do next
+                nextPageLink=self._browser.find_element_by_link_text("Next")
+                nextPageLink.click()
+
+            except NoSuchElementException:
+                assert 0, "error reading book"
+#                print "error reading book"
+#                break
+                
+    def searchBook(self):
+        """Runs the book searching test for Tar Heel Reader
 		"""
 
-		self._browser.get("http://tarheelreader.org/2010/08/26/i-like-sonic-cartoons/")
-		self._browser.implicitly_wait(MAX_WAIT_TIME)
+		#Load home page of Tar Heel Reader
+        self._browser.get("http://tarheelreader.org/2013/11/18/tarheelreadertestbook/")
+        assert "Tar Heel Reader" in self._browser.title
+    
+    def select_option(self, xpath, textToFind, exceptionString):
+        """Selects from an arbitrary select element on the search page.
 
-		line_number=0
-		error=False
+        xpath--the select element HTML description that will help the
+            browser find that select element
 
-		#Read one page at a time of current book
-		while(line_number<10):
-			try:
-				time.sleep(3.0)
+        textToFind--the text which the browser is trying to find an
+                            option for within the select element
 
-				#Have we checked the title and author on the first page yet? 
-				if(line_number>=2):
-					lineToLookFor=self._lines[line_number]
-					print "looking for \'"+lineToLookFor+"\'"
-					page_wrap_element=self._browser.find_element_by_xpath("//div[contains(@class, 'page-wrap') and not (contains(@style, 'display:none') or contains(@style, 'display: none') or contains(@style, 'visibility:hidden') or contains(@style, 'visibility: hidden'))]")
-					caption_box_element=page_wrap_element.find_element_by_class_name("thr-caption-box")
-					text_elements=caption_box_element.find_elements_by_xpath("//p[contains(@class, 'VOSay')]")
+        exceptionString--the text to display if the select element
+                being searched for is not found
+        """	
+        try:
+            selectionElement=self._browser.find_element_by_xpath(xpath)
+            options=selectionElement.find_elements_by_tag_name("option")
+            optionStrings=[]
+        
+            for option in options:
+                optionStrings.append(str(option.text))
+            options[optionStrings.index(textToFind)].click()
+        
+        except NoSuchElementException:
+            assert 0, exceptionString
+            
+    def tearDown(self):
+        time.sleep(5.0)
+        print '\n Ran ' + param[0]
+        print 'Platform: ' + param[1]
+        print 'Browser: ' + param[2]
+        self._browser.quit()
+        
+if __name__ == '__main__':
+    param = []
+    if len(sys.argv) == 4:
+        param.append(sys.argv[0])
+        param.append(sys.argv[1])
+        param.append(sys.argv[2])
+        param.append(sys.argv[3])
+        del sys.argv[1:]
+        del sys.argv[2:]
+        del sys.argv[3:]
+    else:
+        param.append(sys.argv[0])
+        param.append(sys.argv[1])
+        param.append(sys.argv[2])
+        del sys.argv[1:]
+        del sys.argv[2:]
 
-					if(len(text_elements)==0):
-						print "could not find any text on page %d of book" % (line_number+2)
-						error=True
-					else:
-						text_element=text_elements[0]
-						for paragraph in text_elements:
-							if(paragraph.text==str(lineToLookFor)):
-								text_element=paragraph
-								print "found!"
-								break
-						if(text_element.text!=lineToLookFor):
-							print "wrong text on page %d of book" % (line_number,)
-							error=True
-
-					line_number+=1
-
-				#Make sure title and author on first page of story are correct
-				else:
-					titleToLookFor=str(self._lines[0])
-					authorToLookFor=str(self._lines[1])
-					print "looking for title \'"+titleToLookFor+"\'" 
-					print "looking for author \'"+authorToLookFor+"\'"
-
-					content_wrap=self._browser.find_element_by_xpath("//div[contains(@class, 'content-wrap') and not (contains(@style, 'display:none') or contains(@style, 'display: none') or contains(@style, 'visibility:hidden') or contains(@style, 'visibility: hidden'))]")
-					title_element=content_wrap.find_element_by_class_name("title")
-					author_element=content_wrap.find_element_by_class_name("thr-author")
-
-					if(title_element.text==titleToLookFor):
-						print "correct title found!"
-
-					else:
-						print "wrong title found!"
-						error=True
-
-					if(author_element.text==authorToLookFor):
-						print "correct author found!"
-
-					else:
-						print "wrong author found!"
-						error=True
-
-					line_number=2
-
-				nextPageLink=self._browser.find_element_by_link_text("Next")
-				nextPageLink.click()
-
-			except NoSuchElementException:
-				print "error reading book"
-				error=True
-				break
-
-		print "finished reading book"
-
-		#Has the test failed or not?
-		if(error==True):
-			sys.exit(1)
-
-	def tearDown(self):
-		"""Closes the browser when the program exits
-		"""
-		time.sleep(5.0)
-		self._browser.quit()
-
-if __name__=='__main__':
-	if(len(sys.argv)>2): #Too many or incorrect input arguments?
-        	print "Incorrect number of parameters!"
-                print "Format is: %s [-c]" % (sys.argv[0],)
-		sys.exit(1)
-        elif(len(sys.argv)==2):
-                if(sys.argv[1]=="-c"):
-                	usingChrome=True
-                else:
-                        print "Error in '%s' parameter!" % (sys.argv[1],)
-                        print "Format is: %s [-c]" % (sys.argv[0],)
-			sys.exit(1)
-
-	del sys.argv[1:]
-	unittest.main()
+    unittest.main()
+    

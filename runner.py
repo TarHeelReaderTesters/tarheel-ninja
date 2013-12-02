@@ -23,19 +23,30 @@ while(os.path.exists(log)):
 file = open(log, 'w')
 
 #add scripts to run in parallel
+
+def scripts():
+    scriptNames: ["login.py", "mainMenu.py", "searchBook.py", "readSpecificBook.py", "readJapaneseContent.py", "captureNewPics.py"]
+
+
+#login
+#menu functionality
+#search a book
+
+#read a (specific) book
+#read a Japanese book
+
+#take the base screenshots (put this in a separate script)
+
+#take the new screenshots
 processes.append(Popen ('python captureNewPics.py MAC firefox',stdout=file, stderr=file, shell=True))
 processes.append(Popen ('python captureNewPics.py MAC chrome',stdout=file, stderr=file, shell=True))
 processes.append(Popen ('python captureNewPics.py MAC safari',stdout=file, stderr=file, shell=True))
-processes.append(Popen ('python captureBasePics.py MAC firefox',stdout=file, stderr=file, shell=True))
-processes.append(Popen ('python captureBasePics.py MAC chrome',stdout=file, stderr=file, shell=True))
-processes.append(Popen ('python captureBasePics.py MAC safari',stdout=file, stderr=file, shell=True))
 
-processes.append(Popen ('python captureNewPics.py WINDOWS firefox',stdout=file, stderr=file, shell=True))
-processes.append(Popen ('python captureNewPics.py WINDOWS chrome',stdout=file, stderr=file, shell=True))
-processes.append(Popen ('python captureNewPics.py WINDOWS iexplore',stdout=file, stderr=file, shell=True))
-processes.append(Popen ('python captureBasePics.py WINDOWS firefox',stdout=file, stderr=file, shell=True))
-processes.append(Popen ('python captureBasePics.py WINDOWS chrome',stdout=file, stderr=file, shell=True))
-processes.append(Popen ('python captureBasePics.py WINDOWS iexplore',stdout=file, stderr=file, shell=True))
+processes.append(Popen ('python captureNewPics.py WINDOWS iexplore 8',stdout=file, stderr=file, shell=True))
+processes.append(Popen ('python captureNewPics.py WINDOWS iexplore 10',stdout=file, stderr=file, shell=True))
+
+#do an image comparison between old and new
+
 
 for subprocess in processes:
     subprocess.wait()

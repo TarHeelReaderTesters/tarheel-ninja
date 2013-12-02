@@ -10,7 +10,7 @@ MAX_WAIT_TIME=30
 
 class screenshot(unittest.TestCase):
     def setUp(self):
-        if(param == 3):
+        if len(param) == 4:
             self._browser = webdriver.Remote(desired_capabilities = {"platform": param[1],"browserName": param[2], "version": param[3]})
         else:
             self._browser = webdriver.Remote(desired_capabilities = {"platform": param[1],"browserName": param[2]})
