@@ -52,8 +52,8 @@ class login(unittest.TestCase):
 
 
     def tearDown(self):
-		"""Closes the browser when the program exits
-            """
+        """Closes the browser when the program exits
+        """
         time.sleep(5.0)
         if len(param) == 4:
             print '\nTest: ' + param[0]
@@ -65,7 +65,7 @@ class login(unittest.TestCase):
             print '\nTest: ' + param[0]
             print 'Platform: ' + param[3]
             print 'Browser: ' + param[4]
-		self._browser.quit()
+        self._browser.quit()
 
 if __name__=='__main__':
     param = []
