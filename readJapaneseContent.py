@@ -9,18 +9,31 @@ import unittest
 MAX_WAIT_TIME=30
 param=[]
 
-class Searcher(unittest.TestCase):
-	def setUp(self):
-            	global param
-            	#check How many arguments were passed in (OS Browser Version) or (OS Browser)
-		if len(param) == 4:
-           		self._browser = webdriver.Remote(desired_capabilities = {"platform": param[1],"browserName": param[2], "version": param[3]})
-        	else:
-            		self._browser = webdriver.Remote(desired_capabilities = {"platform": param[1],"browserName": param[2]})
-            
-        	self.build_up_page_tests()
+class JapaneseContentReader(unittest.TestCase):
+        def setUp(self):
+                #check How many arguments were passed in (OS Browser Version) or (OS Browser)
+                if len(param) == 4:
+                        self._browser = webdriver.Remote(desired_capabilities = {"platform": param[1],"browserName": param[2], "version": param[3]})
+                else:
+                        self._browser = webdriver.Remote(desired_capabilities = {"platform": param[1],"browserName": param[2]})
 
-	def build_up_page_tests(self):
+                try:
+                        f=open('japaneseBookLines.txt', 'r')
+                        self._lines=f.readlines()
+                        for i in range(0, len(self._lines)):
+                                self._lines[i]=self._lines[i].strip().decode('utf-8')
+                        f.close()
+                except Exception, e:
+                        print e
+                        print "Error reading book lines file!"
+                        try:
+	                        f.close()
+	                except Exception:
+		                print "Error closing book lines file!"
+	                finally:
+		                sys.exit(1)
+
+	"""def build_up_page_tests(self):
 		try:
 			f=open('japaneseBookLines.txt', 'r')
 			self._lines=f.readlines()
@@ -35,7 +48,7 @@ class Searcher(unittest.TestCase):
 				print "Error closing book lines file!"
 			finally:
 				sys.exit(1)
-
+    """
 	def test_book_reading(self):
 		"""Runs the book reading test for Tar Heel Reader
 		   PRE: Already at title page of book being read
@@ -122,24 +135,21 @@ class Searcher(unittest.TestCase):
 	def tearDown(self):
 		"""Closes the browser when the program exits
 		"""
-        global param
-        time.sleep(5.0)
+        #global param
+                time.sleep(5.0)
 
-        if len(param) == 4:
-            print '\nTest: ' + param[0]
-            print 'Platform: ' + param[1]
-            print 'Browser: ' + param[2]
-            print 'Version: ' + param[3]
-        else:
-            print len(param)
-            print '\nTest: ' + param[0]
-            print 'Platform: ' + param[1]
-            print 'Browser: ' + param[2]
-        self._browser.quit()
+                if len(param) == 4:
+                        print '\nTest: ' + param[0]
+                        print 'Platform: ' + param[1]
+                        print 'Browser: ' + param[2]
+                        print 'Version: ' + param[3]
+                else:
+                        print '\nTest: ' + param[0]
+                        print 'Platform: ' + param[1]
+                        print 'Browser: ' + param[2]
+                self._browser.quit()
 
-if __name__=='__main__':
-    global param
-    
+if __name__ == '__main__':
     if len(sys.argv) == 4:
         param.append(sys.argv[0])
         param.append(sys.argv[1])
@@ -152,5 +162,5 @@ if __name__=='__main__':
         param.append(sys.argv[1])
         param.append(sys.argv[2])
         del sys.argv[1:]
-        
-	unittest.main()
+
+    unittest.main()
