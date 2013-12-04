@@ -42,7 +42,7 @@ class readBook(unittest.TestCase):
 #                break
                 
     def searchBook(self):
-        """Runs the book searching test for Tar Heel Reader
+        """goes directly to a test book
 		"""
 
 		#Load home page of Tar Heel Reader

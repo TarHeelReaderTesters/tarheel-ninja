@@ -6,6 +6,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import StaleElementReferenceException
 import time, re, sys
 
+MAX_WAIT_TIME = 5
 
 #testing background colors
 class testBackgroundColor(unittest.TestCase):
@@ -16,19 +17,29 @@ class testBackgroundColor(unittest.TestCase):
                 self._browser = webdriver.Remote(desired_capabilities = {"platform": param[1],"browserName": param[2]})
             self._browser.implicitly_wait(30)
             self.base_url = "http://tarheelreader.org/"
-            self.verificationErrors = []
-            self.accept_next_alert = True
+
 
         def test_background_color(self):
             browser = self._browser
-            browser.get(self.base_url + "/2013/10/22/pandas-can-eat/")
+            browser.get(self.base_url + "2013/11/18/tarheelreadertestbook/")
+
             settings = browser.find_element_by_xpath("//img[contains(@src,'/themeV1/images/settings.png')]")# Find the settings menu
+            WebDriverWait(browser, MAX_WAIT_TIME).until(lambda s: s.find_element_by_xpath("//img[contains(@src,'/themeV1/images/settings.png')]").is_displayed())
             settings.click()
+           
             colors = browser.find_element_by_xpath("//span[contains(@class,'colors')]")# Find the Colors menu
+            WebDriverWait(browser, MAX_WAIT_TIME).until(lambda s: s.find_element_by_xpath("//span[contains(@class,'colors')]").is_displayed())
             colors.click()
+            
             pageColor = browser.find_element_by_xpath("//span[contains(text(),'Page Color')]")# Find the Page Color menu
+            WebDriverWait(browser, MAX_WAIT_TIME).until(lambda s: s.find_element_by_xpath("//span[contains(text(),'Page Color')]").is_displayed())
+            #WebDriverWait(browser, MAX_WAIT_TIME).until(lambda s: s.find_element_by_xpath("//ul[@class='submenu l1 r1 active selected']").is_displayed())
+            
             pageColor.click()
+            
             colorSelect = browser.find_element_by_xpath("//span[contains(@class,'magenta')]")# choose a color
+            WebDriverWait(browser, MAX_WAIT_TIME).until(lambda s: s.find_element_by_xpath("//span[contains(@class,'magenta')]").is_displayed())
+            
             colorSelect.click()
 
 
@@ -41,30 +52,20 @@ class testBackgroundColor(unittest.TestCase):
             else:
                 print "background color values are not equal"
                 
-        def is_element_present(self, how, what):
-            try: self._browser.find_element(by=how, value=what)
-            except NoSuchElementException, e: return False
-            return True
-        
-        def is_alert_present(self):
-            try: self._browser.switch_to_alert()
-            except NoAlertPresentException, e: return False
-            return True
-        
-        def close_alert_and_get_its_text(self):
-            try:
-                alert = self._browser.switch_to_alert()
-                alert_text = alert.text
-                if self.accept_next_alert:
-                    alert.accept()
-                else:
-                    alert.dismiss()
-                return alert_text
-            finally: self.accept_next_alert = True
-        
+
         def tearDown(self):
+            if len(param) == 4:
+                print '\nTest: ' + param[0]
+                print 'Platform: ' + param[1]
+                print 'Browser: ' + param[2]
+                print 'Version: ' + param[3]
+            else:
+                print '\nTest: ' + param[0]
+                print 'Platform: ' + param[1]
+                print 'Browser: ' + param[2]
             self._browser.quit()
-            self.assertEqual([], self.verificationErrors)
+
+
 
 if __name__ == "__main__":
         param = []
