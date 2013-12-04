@@ -25,8 +25,8 @@ file = open(log, 'w')
 #add scripts to run in parallel
 
 def scripts():
-    #scriptNames = ["login.py tarheelreadertesters 40m4h99","mainMenu.py", "searchBook.py", "readSpecificBook.py", "readJapaneseContent.py", "captureNewPics.py"]
-    scriptNames = ["searchBook.py"]
+    #scriptNames = ["login.py tarheelreadertesters 40m4h99","mainMenu.py", "searchBook.py", "readBook.py", "readJapaneseContent.py", "captureNewPics.py"]
+    scriptNames = ["readJapaneseContent.py"]
     for script in scriptNames:
             print 'Current script: ' + script
             #Mac scripts
@@ -36,7 +36,6 @@ def scripts():
             #Windows scripts
             processes.append(Popen ('python '+script+' WINDOWS iexplore 8',stdout=file, stderr=file, shell=True))
             processes.append(Popen ('python '+script+' WINDOWS iexplore 10',stdout=file, stderr=file, shell=True))
-
 
 
 for subprocess in processes:

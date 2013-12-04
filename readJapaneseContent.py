@@ -43,7 +43,7 @@ class JapaneseContentReader(unittest.TestCase):
 		"""
 
 		self._browser.get("http://tarheelreader.org/2013/03/04/%E3%81%AF%E3%81%98%E3%82%81%E3%81%BE%E3%81%97%E3%81%A6/")
-		self._browser.implicitly_wait(MAX_WAIT_TIME)
+       		self._browser.implicitly_wait(MAX_WAIT_TIME)
 
 		line_number=0
 		error=False
@@ -94,15 +94,14 @@ class JapaneseContentReader(unittest.TestCase):
 				nextPageLink.click()
 
 			except NoSuchElementException:
-				print "error reading book"
+				print "Error reading book"
 				error=True
 				break
 
-		print "finished reading book"
 
 		#Has the test failed or not?
 		if(error==True):
-			sys.exit(1)
+			assert 0, "Japanese text is incorrect"
 
 	def tearDown(self):
 		"""Closes the browser when the program exits
