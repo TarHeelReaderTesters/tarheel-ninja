@@ -51,7 +51,7 @@ class screenshot(unittest.TestCase):
             name = screenshot_name[i] + '.png'
             self._browser.get(url[i])
             time.sleep(3.0)
-            self._browser.save_screenshot('images/base/' + param[1] + '/' + param[2] +'/' + name)
+            print self._browser.get_screenshot_as_file('images/base/' + param[1] + '/' + param[2] +'/' + name)
 
 
 		#Load home page of Tar Heel Reader

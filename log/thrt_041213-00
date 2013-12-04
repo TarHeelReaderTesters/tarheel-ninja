@@ -1,0 +1,47 @@
+.
+----------------------------------------------------------------------
+Ran 1 test in 7.799s
+
+OK
+
+Test: searchBook.py
+Platform: MAC
+Browser: safari
+.
+----------------------------------------------------------------------
+Ran 1 test in 9.978s
+
+OK
+
+Test: searchBook.py
+Platform: MAC
+Browser: chrome
+.
+----------------------------------------------------------------------
+Ran 1 test in 10.541s
+
+OK
+
+Test: searchBook.py
+Platform: MAC
+Browser: firefox
+.
+----------------------------------------------------------------------
+Ran 1 test in 15.024s
+
+OK
+
+Test: searchBook.py
+Platform: WINDOWS
+Browser: iexplore
+Version: 8
+.
+----------------------------------------------------------------------
+Ran 1 test in 43.325s
+
+OK
+
+Test: searchBook.py
+Platform: WINDOWS
+Browser: iexplore
+Version: 10

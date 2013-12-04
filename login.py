@@ -20,24 +20,15 @@ class login(unittest.TestCase):
 
     def test_login(self):
 	"""Runs the login test for Tar Heel Reader """
-        self._browser.get("http://tarheelreader.org") # Load tar heel reader
+        self._browser.get("http://tarheelreader.org/login") # Load tar heel reader
         assert "Tar Heel Reader" in self._browser.title
+        
 	self._browser.implicitly_wait(MAX_WAIT_TIME)
 	#Click "Write Book" button so we will be taken to login page
-        try:
-            writeButton=self._browser.find_element_by_xpath("//a[contains(@href,'/write/')]")
-            writeButton.click()
-        except NoSuchElementException:
-            assert 0, "can't find write book button"
-            
-            #Click login button
-        try:
-            loginButton=self._browser.find_element_by_xpath("//a[contains(@href,'/login/?goto=write')]")
-            loginButton.click()
-        except NoSuchElementException:
-            assert 0, "can't find login button"
-            
-            #Try to login with input username/password pair
+    
+
+        
+        #Try to login with input username/password pair
         try:
             time.sleep(5.0)
             usernameField=self._browser.find_element_by_xpath("//input[@name='log']")
@@ -48,7 +39,7 @@ class login(unittest.TestCase):
             passwordField.send_keys(self.password)
             loginButton.click()
         except NoSuchElementException:
-            assert 0, str(traceback.print_exc())
+            assert 0, "Unable to login"
 
 
     def tearDown(self):
@@ -61,7 +52,6 @@ class login(unittest.TestCase):
             print 'Browser: ' + param[4]
             print 'Version: ' + param[5]
         else:
-            print len(param)
             print '\nTest: ' + param[0]
             print 'Platform: ' + param[3]
             print 'Browser: ' + param[4]
@@ -84,5 +74,4 @@ if __name__ == '__main__':
         param.append(sys.argv[3])
         param.append(sys.argv[4])
         del sys.argv[1:]
-    print param
     unittest.main()

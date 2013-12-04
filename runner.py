@@ -25,9 +25,10 @@ file = open(log, 'w')
 #add scripts to run in parallel
 
 def scripts():
-    scriptNames = ["login.py", "mainMenu.py", "searchBook.py", "readSpecificBook.py", "readJapaneseContent.py", "captureNewPics.py"]
+    #scriptNames = ["login.py tarheelreadertesters 40m4h99","mainMenu.py", "searchBook.py", "readSpecificBook.py", "readJapaneseContent.py", "captureNewPics.py"]
+    scriptNames = ["searchBook.py"]
     for script in scriptNames:
-            print 'Current script :' + script
+            print 'Current script: ' + script
             #Mac scripts
             processes.append(Popen ('python '+script+' MAC firefox',stdout=file, stderr=file, shell=True))
             processes.append(Popen ('python '+script+' MAC chrome',stdout=file, stderr=file, shell=True))
@@ -35,17 +36,11 @@ def scripts():
             #Windows scripts
             processes.append(Popen ('python '+script+' WINDOWS iexplore 8',stdout=file, stderr=file, shell=True))
             processes.append(Popen ('python '+script+' WINDOWS iexplore 10',stdout=file, stderr=file, shell=True))
-               
 
-#login
-#menu functionality
-#search a book
-#read a (specific) book
-#read a Japanese book
-#take the base screenshots (put this in a separate script)
-#take the new screenshots
-#do an image comparison between old and new
 
 
 for subprocess in processes:
     subprocess.wait()
+
+if __name__ == '__main__':
+    scripts()

@@ -7,8 +7,8 @@ import unittest
 import time
 import sys
 import os
-
-MAX_WAIT_TIME=30
+sys.tracebacklimit = 0
+MAX_WAIT_TIME=8
 usingChrome=False
 
 #testing Main Menu
@@ -28,7 +28,6 @@ class MainMenu(unittest.TestCase):
                 
         menuNames = ['Home', 'Find a book', 'Collections', 'Favorites', 'Write a book', 'Log in', 'Help', 'Your books', 'Announcements', 'Photo credits']
         for menuName in menuNames:
-            print 'Current name :', menuName
             try:
                 while True:
                     try:
@@ -43,15 +42,18 @@ class MainMenu(unittest.TestCase):
             except NoSuchElementException:
                 assert 0, "Cannot find main menu"
 
+
             try:
                 WebDriverWait(driver, MAX_WAIT_TIME).until(lambda s: s.find_element_by_link_text(menuName))
                 homePage = driver.find_element_by_link_text(menuName)
                 homePage.click()
                 time.sleep(3.0)
                 if(menuName!="Home"):
-                    driver.back()
-            except NoSuchElementException:
+                    #driver.back()
+                    driver.get("http://www.tarheelreader.org")
+            except:
                 assert 0, "Cannot find " + menuName + " button"
+
                             
     def tearDown(self):
 	time.sleep(5.0)
@@ -61,7 +63,6 @@ class MainMenu(unittest.TestCase):
             print 'Browser: ' + param[2]
             print 'Version: ' + param[3]
         else:
-            print len(param)
             print '\nTest: ' + param[0]
             print 'Platform: ' + param[1]
             print 'Browser: ' + param[2]
