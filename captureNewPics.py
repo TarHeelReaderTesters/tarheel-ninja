@@ -30,8 +30,8 @@ class screenshot(unittest.TestCase):
                 os.makedirs('images/new/')
             if not os.path.exists('images/new/' + param[1]):
                 os.makedirs('images/new/' + param[1])
-            if not os.path.exists('images/new/' + param[1] +'/' + param[2] + ' ' + param[3]):
-                os.makedirs('images/new/' + param[1] +'/' + param[2] + ' ' + param[3])
+            if not os.path.exists('images/new/' + param[1] +'/' + param[2] + param[3]):
+                os.makedirs('images/new/' + param[1] +'/' + param[2] + param[3])
         else:
             if not os.path.exists('images'):
                 os.makedirs('images')
@@ -65,12 +65,12 @@ class screenshot(unittest.TestCase):
     def tearDown(self):
         time.sleep(5.0)
         if len(param) == 4:
-            print '\nRan ' + param[0]
+            print '\nTest: ' + param[0]
             print 'Platform: ' + param[1]
             print 'Browser: ' + param[2]
             print 'Version: ' + param[3]
         else:
-            print '\nRan ' + param[0]
+            print '\nTest: ' + param[0]
             print 'Platform: ' + param[1]
             print 'Browser: ' + param[2]
         

@@ -8,8 +8,6 @@ import traceback
 import unittest
 
 MAX_WAIT_TIME=30
-username = ""
-password = ""
 
 class login(unittest.TestCase):
     def setUp(self):
@@ -17,8 +15,8 @@ class login(unittest.TestCase):
             self._browser = webdriver.Remote(desired_capabilities = {"platform": param[3],"browserName": param[4], "version": param[5]})
         else:
             self._browser = webdriver.Remote(desired_capabilities = {"platform": param[3],"browserName": param[4]})
-        username = param[1]
-        password = param[2]
+        self.username = param[1]
+        self.password = param[2]
 
     def test_login(self):
 	"""Runs the login test for Tar Heel Reader """
@@ -41,11 +39,13 @@ class login(unittest.TestCase):
             
             #Try to login with input username/password pair
         try:
+            time.sleep(5.0)
             usernameField=self._browser.find_element_by_xpath("//input[@name='log']")
             passwordField=self._browser.find_element_by_xpath("//input[@name='pwd']")
             loginButton=self._browser.find_element_by_xpath("//input[@name='wp-submit']")
-            usernameField.send_keys(username)
-            passwordField.send_keys(password)
+
+            usernameField.send_keys(self.username)
+            passwordField.send_keys(self.password)
             loginButton.click()
         except NoSuchElementException:
             assert 0, str(traceback.print_exc())
@@ -67,7 +67,7 @@ class login(unittest.TestCase):
             print 'Browser: ' + param[4]
         self._browser.quit()
 
-if __name__=='__main__':
+if __name__ == '__main__':
     param = []
     if len(sys.argv) == 6:
         param.append(sys.argv[0])
