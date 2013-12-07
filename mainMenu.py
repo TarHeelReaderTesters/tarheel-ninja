@@ -15,15 +15,16 @@ usingChrome=False
 class MainMenu(unittest.TestCase):
     def setUp(self):
     #Figure out what browser we are going to use
+        self.url = param[1]
 
-        if len(param) == 4:
-            self._browser = webdriver.Remote(desired_capabilities = {"platform": param[1],"browserName": param[2], "version": param[3]})
+        if len(param) == 5:
+            self._browser = webdriver.Remote(desired_capabilities = {"platform": param[2],"browserName": param[3], "version": param[4]})
         else:
-            self._browser = webdriver.Remote(desired_capabilities = {"platform": param[1],"browserName": param[2]})
+            self._browser = webdriver.Remote(desired_capabilities = {"platform": param[2],"browserName": param[3]})
                 
     def test_main_menu(self):
         driver = self._browser
-        driver.get("http://www.tarheelreader.org")
+        driver.get(self.url)
         self.assertIn("Tar Heel Reader", driver.title)
                 
         menuNames = ['Home', 'Find a book', 'Collections', 'Favorites', 'Write a book', 'Log in', 'Help', 'Your books', 'Announcements', 'Photo credits']
@@ -57,30 +58,35 @@ class MainMenu(unittest.TestCase):
                             
     def tearDown(self):
 	time.sleep(5.0)
-        if len(param) == 4:
+        if len(param) == 5:
             print '\nTest: ' + param[0]
-            print 'Platform: ' + param[1]
-            print 'Browser: ' + param[2]
-            print 'Version: ' + param[3]
+            print 'URL: ' + param[1]
+            print 'Platform: ' + param[2]
+            print 'Browser: ' + param[3]
+            print 'Version: ' + param[4]
+        
         else:
             print '\nTest: ' + param[0]
-            print 'Platform: ' + param[1]
-            print 'Browser: ' + param[2]
+            print 'URL: ' + param[1]
+            print 'Platform: ' + param[2]
+            print 'Browser: ' + param[3]
         self._browser.quit()
              
 if __name__ == "__main__":
 	#Do we have right number of parameters?
     param = []
-    if len(sys.argv) == 4:
+    if len(sys.argv) == 5:
         param.append(sys.argv[0])
         param.append(sys.argv[1])
         param.append(sys.argv[2])
         param.append(sys.argv[3])
+        param.append(sys.argv[4])
         del sys.argv[1:]
     else:
         param.append(sys.argv[0])
         param.append(sys.argv[1])
         param.append(sys.argv[2])
+        param.append(sys.argv[3])
         del sys.argv[1:]
     
     unittest.main()

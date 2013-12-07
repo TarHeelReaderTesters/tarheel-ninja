@@ -10,14 +10,15 @@ MAX_WAIT_TIME=30
 param=[]
 
 class JapaneseContentReader(unittest.TestCase):
-        def setUp(self):
-                #check How many arguments were passed in (OS Browser Version) or (OS Browser)
-                if len(param) == 4:
-                        self._browser = webdriver.Remote(desired_capabilities = {"platform": param[1],"browserName": param[2], "version": param[3]})
-                else:
-                        self._browser = webdriver.Remote(desired_capabilities = {"platform": param[1],"browserName": param[2]})
+	def setUp(self):
+		#check How many arguments were passed in (OS Browser Version) or (OS Browser)
+		self.url = param[1]
+		if len(param) == 5:
+                	self._browser = webdriver.Remote(desired_capabilities = {"platform": param[2],"browserName": param[3], "version": param[4]})
+            	else:
+                	self._browser = webdriver.Remote(desired_capabilities = {"platform": param[2],"browserName": param[3]})
 
-                self.build_up_page_tests()
+            	self.build_up_page_tests()
 
         def build_up_page_tests(self):
                 try:
@@ -106,32 +107,33 @@ class JapaneseContentReader(unittest.TestCase):
 	def tearDown(self):
 		"""Closes the browser when the program exits
 		"""
-        #global param
-                time.sleep(5.0)
-
-                if len(param) == 4:
-                        print '\nTest: ' + param[0]
-                        print 'Platform: ' + param[1]
-                        print 'Browser: ' + param[2]
-                        print 'Version: ' + param[3]
-                else:
-                        print '\nTest: ' + param[0]
-                        print 'Platform: ' + param[1]
-                        print 'Browser: ' + param[2]
-                self._browser.quit()
+        	#global param
+        	time.sleep(5.0)
+		if len(param) == 5:
+			print '\nTest: ' + param[0]
+			print 'URL: ' + param[1]
+			print 'Platform: ' + param[2]
+			print 'Browser: ' + param[3]
+			print 'Version: ' + param[4]
+		else:
+			print '\nTest: ' + param[0]
+			print 'URL: ' + param[1]
+			print 'Platform: ' + param[2]
+			print 'Browser: ' + param[3]
+		self._browser.quit()
 
 if __name__ == '__main__':
-    if len(sys.argv) == 4:
-        param.append(sys.argv[0])
-        param.append(sys.argv[1])
-        param.append(sys.argv[2])
-        param.append(sys.argv[3])
-        del sys.argv[1:]
-
-    else:
-        param.append(sys.argv[0])
-        param.append(sys.argv[1])
-        param.append(sys.argv[2])
-        del sys.argv[1:]
-
-    unittest.main()
+	if len(sys.argv) == 5:
+        	param.append(sys.argv[0])
+        	param.append(sys.argv[1])
+        	param.append(sys.argv[2])
+        	param.append(sys.argv[3])
+        	param.append(sys.argv[4])
+        	del sys.argv[1:]
+	else:
+		param.append(sys.argv[0])
+		param.append(sys.argv[1])
+		param.append(sys.argv[2])
+		param.append(sys.argv[3])
+		del sys.argv[1:]
+	unittest.main()

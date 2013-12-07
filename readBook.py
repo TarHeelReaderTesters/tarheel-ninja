@@ -10,10 +10,12 @@ MAX_WAIT_TIME=30
 
 class readBook(unittest.TestCase):
     def setUp(self):
-        if len(param) == 4:
-            self._browser = webdriver.Remote(desired_capabilities = {"platform": param[1],"browserName": param[2], "version": param[3]})
+        self.url = param[1]
+
+        if len(param) == 5:
+            self._browser = webdriver.Remote(desired_capabilities = {"platform": param[2],"browserName": param[3], "version": param[4]})
         else:
-            self._browser = webdriver.Remote(desired_capabilities = {"platform": param[1],"browserName": param[2]})
+            self._browser = webdriver.Remote(desired_capabilities = {"platform": param[2],"browserName": param[3]})
     
             
     def test_readBook(self):
@@ -46,39 +48,43 @@ class readBook(unittest.TestCase):
 		"""
 
 		#Load home page of Tar Heel Reader
-        self._browser.get("http://tarheelreader.org/2013/11/18/tarheelreadertestbook/")
+        if self.url in "http://gbserver3.cs.unc.edu/2011/11/14/the-frog-prince-2/":
+            self._browser.get("http://gbserver3.cs.unc.edu/2011/11/14/the-frog-prince-2/")
+        else:
+            self._browser.get("http://tarheelreader.org/2013/11/18/tarheelreadertestbook/")
         assert "Tar Heel Reader" in self._browser.title
     
                
     def tearDown(self):
         time.sleep(5.0)
-        if len(param) == 4:
+        if len(param) == 5:
             print '\nTest: ' + param[0]
-            print 'Platform: ' + param[1]
-            print 'Browser: ' + param[2]
-            print 'Version: ' + param[3]
+            print 'URL: ' + param[1]
+            print 'Platform: ' + param[2]
+            print 'Browser: ' + param[3]
+            print 'Version: ' + param[4]
+        
         else:
             print '\nTest: ' + param[0]
-            print 'Platform: ' + param[1]
-            print 'Browser: ' + param[2]
+            print 'URL: ' + param[1]
+            print 'Platform: ' + param[2]
+            print 'Browser: ' + param[3]
         self._browser.quit()
         
 if __name__ == '__main__':
     param = []
-    if len(sys.argv) == 4:
+    if len(sys.argv) == 5:
+        param.append(sys.argv[0])
+        param.append(sys.argv[1])
+        param.append(sys.argv[2])
+        param.append(sys.argv[3])
+        param.append(sys.argv[4])
+        del sys.argv[1:]
+    else:
         param.append(sys.argv[0])
         param.append(sys.argv[1])
         param.append(sys.argv[2])
         param.append(sys.argv[3])
         del sys.argv[1:]
-        del sys.argv[2:]
-        del sys.argv[3:]
-    else:
-        param.append(sys.argv[0])
-        param.append(sys.argv[1])
-        param.append(sys.argv[2])
-        del sys.argv[1:]
-        del sys.argv[2:]
-
     unittest.main()
     

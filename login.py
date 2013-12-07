@@ -11,16 +11,17 @@ MAX_WAIT_TIME=30
 
 class login(unittest.TestCase):
     def setUp(self):
-        if len(param) == 6:
-            self._browser = webdriver.Remote(desired_capabilities = {"platform": param[3],"browserName": param[4], "version": param[5]})
+        if len(param) == 7:
+            self._browser = webdriver.Remote(desired_capabilities = {"platform": param[4],"browserName": param[5], "version": param[6]})
         else:
-            self._browser = webdriver.Remote(desired_capabilities = {"platform": param[3],"browserName": param[4]})
-        self.username = param[1]
-        self.password = param[2]
+            self._browser = webdriver.Remote(desired_capabilities = {"platform": param[4],"browserName": param[5]})
+        self.url = param[1]
+        self.username = param[2]
+        self.password = param[3]
 
     def test_login(self):
 	"""Runs the login test for Tar Heel Reader """
-        self._browser.get("http://tarheelreader.org/login") # Load tar heel reader
+        self._browser.get(self.url + '/login') # Load tar heel reader
         assert "Tar Heel Reader" in self._browser.title
         
 	self._browser.implicitly_wait(MAX_WAIT_TIME)
@@ -46,26 +47,29 @@ class login(unittest.TestCase):
         """Closes the browser when the program exits
         """
         time.sleep(5.0)
-        if len(param) == 4:
+        if len(param) == 7:
             print '\nTest: ' + param[0]
-            print 'Platform: ' + param[3]
-            print 'Browser: ' + param[4]
-            print 'Version: ' + param[5]
+            print 'Url: ' + param[1]
+            print 'Platform: ' + param[4]
+            print 'Browser: ' + param[5]
+            print 'Version: ' + param[6]
         else:
             print '\nTest: ' + param[0]
+            print 'Website: ' + param[1]
             print 'Platform: ' + param[3]
             print 'Browser: ' + param[4]
         self._browser.quit()
 
 if __name__ == '__main__':
     param = []
-    if len(sys.argv) == 6:
+    if len(sys.argv) == 7:
         param.append(sys.argv[0])
         param.append(sys.argv[1])
         param.append(sys.argv[2])
         param.append(sys.argv[3])
         param.append(sys.argv[4])
         param.append(sys.argv[5])
+        param.append(sys.argv[6])
         del sys.argv[1:]
     else:
         param.append(sys.argv[0])
@@ -73,5 +77,6 @@ if __name__ == '__main__':
         param.append(sys.argv[2])
         param.append(sys.argv[3])
         param.append(sys.argv[4])
+        param.append(sys.argv[5])
         del sys.argv[1:]
     unittest.main()
