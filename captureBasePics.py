@@ -9,91 +9,127 @@ import unittest
 MAX_WAIT_TIME=30
 
 class screenshot(unittest.TestCase):
+
     def setUp(self):
-    
-        if len(param) == 4:
-            self._browser = webdriver.Remote(desired_capabilities = {"platform": param[1],"browserName": param[2], "version": param[3]})
-        else:
-            self._browser = webdriver.Remote(desired_capabilities = {"platform": param[1],"browserName": param[2]})
+        self.url = param[1]
         
+        #checks if command contains a browser version
+        if len(param) == 6:
+            self._browser = webdriver.Remote(desired_capabilities = {"platform": param[2],"browserName": param[3], "version": param[4]})
+        else:
+            self._browser = webdriver.Remote(desired_capabilities = {"platform": param[2],"browserName": param[3]})
+
         self._browser.set_window_size(800,600)
         self._browser.set_window_position(0,0)
                 
     def test_screenShot(self):
         """Runs the book searching test for Tar Heel Reader
 		"""
-
-        #make a directory named 'images'
-        if len(param) == 4:
-            if not os.path.exists('images'):
-                os.makedirs('images')
-            if not os.path.exists('images/base/'):
-                os.makedirs('images/base/')
-            if not os.path.exists('images/base/' + param[1]):
-                os.makedirs('images/base/' + param[1])
-            if not os.path.exists('images/base/' + param[1] +'/' + param[2] + param[3]):
-                os.makedirs('images/base/' + param[1] +'/' + param[2] + param[3])
+        if self.url in "http://gbserver3.cs.unc.edu":
+            #make base directories for GBserver with browser version'
+            if len(param) == 5:
+                if not os.path.exists('images'):
+                    os.makedirs('images')
+                if not os.path.exists('images/GBserver3/'):
+                    os.makedirs('images/GBserver3/')
+                if not os.path.exists('images/GBserver3/base/'):
+                    os.makedirs('images/GBserver3/base/')
+                if not os.path.exists('images/GBserver3/base/' + param[2]):
+                    os.makedirs('images/GBserver3/base/' + param[2])
+                if not os.path.exists('images/GBserver3/base/' + param[2] +'/' + param[3] + param[4]):
+                    os.makedirs('images/GBserver3/base/' + param[2] +'/' + param[3] + param[4])
+            else:
+            #make base directories for GBserver without browser version'
+                if not os.path.exists('images'):
+                    os.makedirs('images')
+                if not os.path.exists('images/GBserver3/'):
+                    os.makedirs('images/GBserver3/')
+                if not os.path.exists('images/GBserver3/base/'):
+                    os.makedirs('images/GBserver3/base/')
+                if not os.path.exists('images/GBserver3/base/' + param[2]):
+                    os.makedirs('images/GBserver3/base/' + param[2])
+                if not os.path.exists('images/GBserver3/base/' + param[2] +'/' + param[3]):
+                    os.makedirs('images/GBserver3/base/' + param[2] +'/' + param[3])
+            print self.url
+        
+        
+            url = ['http://gbserver3.cs.unc.edu/2011/02/28/mice-like-to-play-and-hide/','http://gbserver3.cs.unc.edu/2011/02/28/mice-like-to-play-and-hide/2/' , 'http://gbserver3.cs.unc.edu/2011/02/28/mice-like-to-play-and-hide/3/' , 'http://gbserver3.cs.unc.edu/2011/02/28/mice-like-to-play-and-hide/4/', 'http://gbserver3.cs.unc.edu/2011/02/28/mice-like-to-play-and-hide/5/', 'http://gbserver3.cs.unc.edu/2011/02/28/mice-like-to-play-and-hide/6/']
+        
+        
+            screenshot_name = ['title', 'page2', 'page3', 'page4', 'page5', 'page6']
+            
+            #takes a screenshot for every page in the url array
+            for i in range(5):
+                name = screenshot_name[i] + '.png'
+                self._browser.get(url[i])
+                time.sleep(3.0)
+                self._browser.save_screenshot('images/GBserver3/base/' + param[2] + '/' + param[3] +'/' + name)
         else:
-            if not os.path.exists('images'):
-                os.makedirs('images')
-            if not os.path.exists('images/base/'):
-                os.makedirs('images/base/')
-            if not os.path.exists('images/base/' + param[1]):
-                os.makedirs('images/base/' + param[1])
-            if not os.path.exists('images/base/' + param[1] +'/' + param[2]):
-                os.makedirs('images/base/' + param[1] +'/' + param[2])
+            #make base directories for tarheelreader with browser version'
+            if len(param) == 5:
+                if not os.path.exists('images'):
+                    os.makedirs('images')
+                if not os.path.exists('images/tarheelreader/base/'):
+                    os.makedirs('images/tarheelreader/base/')
+                if not os.path.exists('images/tarheelreader/base/' + param[2]):
+                    os.makedirs('images/tarheelreader/base/' + param[2])
+                if not os.path.exists('images/tarheelreader/base/' + param[2] +'/' + param[3] + param[4]):
+                    os.makedirs('images/tarheelreader/base/' + param[2] +'/' + param[3] + param[4])
+            else:
+            #make base directories for tarheelreader without browser version'
+                if not os.path.exists('images'):
+                    os.makedirs('images')
+                if not os.path.exists('images/tarheelreader/base/'):
+                    os.makedirs('images/tarheelreader/base/')
+                if not os.path.exists('images/tarheelreader/base/' + param[2]):
+                    os.makedirs('images/tarheelreader/base/' + param[2])
+                if not os.path.exists('images/tarheelreader/base/' + param[2] +'/' + param[3]):
+                    os.makedirs('images/tarheelreader/base/' + param[2] +'/' + param[3])
         
+            url = ['http://tarheelreader.org/2013/11/18/tarheelreadertestbook/', 'http://tarheelreader.org/2013/11/18/tarheelreadertestbook/2/', 'http://tarheelreader.org/2013/11/18/tarheelreadertestbook/3/', 'http://tarheelreader.org/2013/11/18/tarheelreadertestbook/4/', 'http://tarheelreader.org/2013/11/18/tarheelreadertestbook/5/']
         
-        url = ['http://tarheelreader.org/2013/11/18/tarheelreadertestbook/', 'http://tarheelreader.org/2013/11/18/tarheelreadertestbook/2/', 'http://tarheelreader.org/2013/11/18/tarheelreadertestbook/3/', 'http://tarheelreader.org/2013/11/18/tarheelreadertestbook/4/', 'http://tarheelreader.org/2013/11/18/tarheelreadertestbook/5/']
-        
-        screenshot_name = ['title', 'page2', 'page3', 'page4', 'page5_japanese']
-        for i in range(5):
-            name = screenshot_name[i] + '.png'
-            self._browser.get(url[i])
-            time.sleep(3.0)
-            print self._browser.get_screenshot_as_file('images/base/' + param[1] + '/' + param[2] +'/' + name)
-
-
-		#Load home page of Tar Heel Reader
-        #self._browser.get(param[3])
-        #self._browser.implicitly_wait(10)
-        #time.sleep(10.0)
-	#Load home page of Tar Heel Reader
-    #self._browser.get("http://tarheelreader.org/2013/10/22/pandas-can-eat/")
-        #self._browser.save_screenshot(name)
-        #self._browser.get_screenshot_as_file(name)
-        #assert "Tar Heel Reader" in self._browser.title
+            screenshot_name = ['title', 'page2', 'page3', 'page4', 'page5_japanese']
+            
+            #takes a screenshot for every page in the url array
+            for i in range(5):
+                name = screenshot_name[i] + '.png'
+                self._browser.get(url[i])
+                time.sleep(3.0)
+                self._browser.save_screenshot('images/tarheelreader/base/' + param[2] + '/' + param[3] +'/' + name)
             
     def tearDown(self):
+        
         time.sleep(5.0)
-        if len(param) == 4:
+        #formats output with browser version
+        if len(param) == 5:
             print '\nTest: ' + param[0]
-            print 'Platform: ' + param[1]
-            print 'Browser: ' + param[2]
-            print 'Version: ' + param[3]
+            print 'URL: ' + param[1]
+            print 'Platform: ' + param[2]
+            print 'Browser: ' + param[3]
+            print 'Version: ' + param[4]
+        
         else:
+        #formats output without browser version
             print '\nTest: ' + param[0]
-            print 'Platform: ' + param[1]
-            print 'Browser: ' + param[2]
+            print 'URL: ' + param[1]
+            print 'Platform: ' + param[2]
+            print 'Browser: ' + param[3]
         self._browser.quit()
         
 if __name__ == '__main__':
     param = []
-    if len(sys.argv) == 4:
+    #python Unittest requires an empty array.  So save the current paramters, then delete them.
+    if len(sys.argv) == 5:
+        param.append(sys.argv[0])
+        param.append(sys.argv[1])
+        param.append(sys.argv[2])
+        param.append(sys.argv[3])
+        param.append(sys.argv[4])
+        del sys.argv[1:]
+    else:
         param.append(sys.argv[0])
         param.append(sys.argv[1])
         param.append(sys.argv[2])
         param.append(sys.argv[3])
         del sys.argv[1:]
-        del sys.argv[2:]
-        del sys.argv[3:]
-    else:
-        param.append(sys.argv[0])
-        param.append(sys.argv[1])
-        param.append(sys.argv[2])
-        del sys.argv[1:]
-        del sys.argv[2:]
-        del sys.argv[3:]
-
     unittest.main()
-    
