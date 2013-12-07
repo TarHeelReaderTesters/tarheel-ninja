@@ -20,7 +20,7 @@ class testTextColor(unittest.TestCase):
     
     def test_text_color(self):
         browser = self._browser
-        browser.get(self.base_url + "/2013/10/22/pandas-can-eat/")
+        browser.get(self.base_url + "2013/11/18/tarheelreadertestbook/")
         browser.find_element_by_css_selector("img[alt=\"Settings\"]").click()
         browser.find_element_by_css_selector("span.colors").click()
         browser.find_element_by_css_selector("li.textColors > span").click()
