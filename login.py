@@ -66,9 +66,9 @@ class login(unittest.TestCase):
             print 'Version: ' + param[6]
         else:
             print '\nTest: ' + param[0]
-            print 'Website: ' + param[1]
-            print 'Platform: ' + param[3]
-            print 'Browser: ' + param[4]
+            print 'Url: ' + param[1]
+            print 'Platform: ' + param[4]
+            print 'Browser: ' + param[5]
         self._browser.quit()
 
 if __name__ == '__main__':

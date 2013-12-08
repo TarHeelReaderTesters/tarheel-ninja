@@ -49,7 +49,7 @@ class ReadBook(unittest.TestCase):
 
 		#Load home page of Tar Heel Reader
         if self.url in "http://gbserver3.cs.unc.edu/2011/11/14/the-frog-prince-2/":
-            self._browser.get("http://gbserver3.cs.unc.edu/2011/11/14/the-frog-prince-2/")
+            self._browser.get("http://gbserver3.cs.unc.edu/2011/02/28/mice-like-to-play-and-hide/")
         else:
             self._browser.get("http://tarheelreader.org/2013/11/18/tarheelreadertestbook/")
         assert "Tar Heel Reader" in self._browser.title

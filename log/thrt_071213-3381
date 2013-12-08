@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "captureAllBasePics.py", line 47, in <module>
+    scripts()
+  File "captureAllBasePics.py", line 35, in scripts
+    processes.append(Popen ('python '+script+' '+url+' MAC firefox',stdout=file, stderr=file, shell=True))
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/subprocess.py", line 679, in __init__
+    errread, errwrite)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/subprocess.py", line 1130, in _execute_child
+    self.pid = os.fork()
+OSError: [Errno 35] Resource temporarily unavailable
+Traceback (most recent call last):
+  File "captureAllBasePics.py", line 47, in <module>
+    scripts()
+  File "captureAllBasePics.py", line 39, in scripts
+    processes.append(Popen ('python '+script+' '+url+' WINDOWS iexplore 8',stdout=file, stderr=file, shell=True))
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/subprocess.py", line 679, in __init__
+    errread, errwrite)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/subprocess.py", line 1130, in _execute_child
+    self.pid = os.fork()
+OSError: [Errno 35] Resource temporarily unavailable

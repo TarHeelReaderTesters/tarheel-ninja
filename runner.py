@@ -1,8 +1,11 @@
 from subprocess import Popen
 import time
 import os.path
+import sys
+
 
 processes = []
+url = str(sys.argv[1])
 #name the logfile using current date
 log = 'log/thrt_' + time.strftime('%d%m%y-00')
 
@@ -25,21 +28,26 @@ file = open(log, 'w')
 #add scripts to run in parallel
 
 def scripts():
-    #scriptNames = ["login.py tarheelreadertesters 40m4h99","mainMenu.py", "searchBook.py", "readBook.py", "readJapaneseContent.py", "captureNewPics.py","imageComparison.py","bookContent.py","backgroundColor.py", "textColor.py"]
-    scriptNames = ["textColor.py"]
+    global url
+    #scriptNames = ["login.py","mainMenu.py", "searchBook.py", "readBook.py", "readJapaneseContent.py", "captureNewPics.py", "imageComparison.py","bookContent.py","backgroundColor.py", "textColor.py"]
+    scriptNames = ["login.py"]
     for script in scriptNames:
             print 'Current script: ' + script
+            if script == "login.py":
+            #login.py has extra parameters
+                script="login.py "+url+" tarheelreadertesters 40m4h99"
+                url=""
             #Mac scripts
-            processes.append(Popen ('python '+script+' MAC firefox',stdout=file, stderr=file, shell=True))
-            processes.append(Popen ('python '+script+' MAC chrome',stdout=file, stderr=file, shell=True))
-            processes.append(Popen ('python '+script+' MAC safari',stdout=file, stderr=file, shell=True))
+            processes.append(Popen ('python '+script+' '+url+' MAC firefox',stdout=file, stderr=file, shell=True))
+            processes.append(Popen ('python '+script+' '+url+' MAC chrome',stdout=file, stderr=file, shell=True))
+            processes.append(Popen ('python '+script+' '+url+' MAC safari',stdout=file, stderr=file, shell=True))
             #Windows scripts
-            processes.append(Popen ('python '+script+' WINDOWS iexplore 8',stdout=file, stderr=file, shell=True))
-            processes.append(Popen ('python '+script+' WINDOWS iexplore 10',stdout=file, stderr=file, shell=True))
+            processes.append(Popen ('python '+script+' '+url+' WINDOWS iexplore 8',stdout=file, stderr=file, shell=True))
+            processes.append(Popen ('python '+script+' '+url+' WINDOWS iexplore 10',stdout=file, stderr=file, shell=True))
 
 
-for subprocess in processes:
-    subprocess.wait()
+    for subprocess in processes:
+        subprocess.wait()
 
 if __name__ == '__main__':
-    scripts()
+     scripts()
