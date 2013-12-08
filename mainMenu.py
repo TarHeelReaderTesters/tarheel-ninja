@@ -35,7 +35,8 @@ class MainMenu(unittest.TestCase):
                         break
                     except StaleElementReferenceException:
                         time.sleep(1.0)
-                            
+            
+            
                 well = self._browser.find_element_by_xpath("//img[contains(@src,'/images/well.png')]")
                 well.click()
                 WebDriverWait(self._browser, MAX_WAIT_TIME).until(lambda s: s.find_element_by_class_name("navigationMenu").is_displayed())
@@ -56,6 +57,7 @@ class MainMenu(unittest.TestCase):
                             
     def tearDown(self):
 	time.sleep(5.0)
+    #formats output with browser version
         if len(param) == 5:
             print '\nTest: ' + param[0]
             print 'URL: ' + param[1]
@@ -64,6 +66,7 @@ class MainMenu(unittest.TestCase):
             print 'Version: ' + param[4]
         
         else:
+        #formats output without browser version
             print '\nTest: ' + param[0]
             print 'URL: ' + param[1]
             print 'Platform: ' + param[2]
@@ -71,7 +74,7 @@ class MainMenu(unittest.TestCase):
         self._browser.quit()
              
 if __name__ == "__main__":
-	#Do we have right number of parameters?
+	#python Unittest requires an empty array.  So save the current paramters, then delete them.
     param = []
     if len(sys.argv) == 5:
         param.append(sys.argv[0])

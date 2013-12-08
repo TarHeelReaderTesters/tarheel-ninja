@@ -18,34 +18,45 @@ class login(unittest.TestCase):
         self.url = param[1]
         self.username = param[2]
         self.password = param[3]
+        
+    def is_present(self):
+    #checks if server supports logging in, a message will appear on the login screen if logging in is not supported
+        try:
+            message = self._browser.find_element_by_xpath("//p[@class='message']")
+        except NoSuchElementException, e:
+            return False
 
     def test_login(self):
-	"""Runs the login test for Tar Heel Reader """
+	#Runs the login test for Tar Heel Reader
         self._browser.get(self.url + '/login') # Load tar heel reader
         assert "Tar Heel Reader" in self._browser.title
         
 	self._browser.implicitly_wait(MAX_WAIT_TIME)
 	#Click "Write Book" button so we will be taken to login page
     
-
-        
         #Try to login with input username/password pair
         try:
             time.sleep(5.0)
             usernameField=self._browser.find_element_by_xpath("//input[@name='log']")
             passwordField=self._browser.find_element_by_xpath("//input[@name='pwd']")
             loginButton=self._browser.find_element_by_xpath("//input[@name='wp-submit']")
-
             usernameField.send_keys(self.username)
             passwordField.send_keys(self.password)
             loginButton.click()
+            
+            if self.is_present() == False:
+                print ""
+            else:
+                print "Login Failed"
+
+        
         except NoSuchElementException:
             assert 0, "Unable to login"
 
 
     def tearDown(self):
-        """Closes the browser when the program exits
-        """
+        #Closes the browser when the program exits
+        
         time.sleep(5.0)
         if len(param) == 7:
             print '\nTest: ' + param[0]

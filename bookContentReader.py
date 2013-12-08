@@ -9,7 +9,7 @@ import unittest
 MAX_WAIT_TIME=30
 
 
-class JapaneseContentReader(unittest.TestCase):
+class BookContentReader(unittest.TestCase):
 	def setUp(self):
 		#check How many arguments were passed in (OS Browser Version) or (OS Browser)
 		self.url = param[1]
@@ -19,11 +19,11 @@ class JapaneseContentReader(unittest.TestCase):
                 	self._browser = webdriver.Remote(desired_capabilities = {"platform": param[2],"browserName": param[3]})
                 
                 if param[1] == "http://gbserver3.cs.unc.edu":
-                    self.build_up_page_tests("sandboxJapaneseBookLines.txt")
-                    self._japaneseBook = "http://gbserver3.cs.unc.edu/2011/08/20/japanese-house%E3%80%80%E3%81%AB%E3%81%BB%E3%82%93%E3%80%80%E3%81%AE%E3%80%80%E3%81%84%E3%81%88/"
+                    self.build_up_page_tests("sandboxEnglishBookLines.txt")
+                    self._englishBook = "http://gbserver3.cs.unc.edu/2011/02/28/mice-like-to-play-and-hide/"
                 else:
-                    self.build_up_page_tests("japaneseBookLines.txt")
-                    self._japaneseBook = "http://tarheelreader.org/2013/03/04/%E3%81%AF%E3%81%98%E3%82%81%E3%81%BE%E3%81%97%E3%81%A6/"
+                    self.build_up_page_tests("englishBookLines.txt")
+                    self._englishBook = "http://tarheelreader.org/2013/11/18/tarheelreadertestbook/"
 
         def build_up_page_tests(self, textFile):
                 try:
@@ -48,16 +48,16 @@ class JapaneseContentReader(unittest.TestCase):
 			 user chooses what he/she wants to do next
 		"""
 
-		self._browser.get(self._japaneseBook)
+		self._browser.get(self._englishBook)
        		self._browser.implicitly_wait(MAX_WAIT_TIME)
 
 		line_number=0
 		error=False
         
         	if param[1] == "http://gbserver3.cs.unc.edu":
-            		count = 6
+            		count = 7
         	else:
-            		count = 11
+            		count = 6
         #Read one page at a time of current book
 		while(line_number<count):
 			try:
@@ -111,7 +111,7 @@ class JapaneseContentReader(unittest.TestCase):
 
 		#Has the test failed or not?
 		if(error==True):
-			assert 0, "Japanese text is incorrect"
+			assert 0, "English text is incorrect"
 
 	def tearDown(self):
 		"""Closes the browser when the program exits

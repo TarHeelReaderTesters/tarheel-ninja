@@ -8,7 +8,7 @@ import unittest
 
 MAX_WAIT_TIME=30
 
-class readBook(unittest.TestCase):
+class ReadBook(unittest.TestCase):
     def setUp(self):
         self.url = param[1]
 
