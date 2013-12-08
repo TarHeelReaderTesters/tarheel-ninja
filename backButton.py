@@ -7,7 +7,7 @@ import time
 import unittest
 
 MAX_WAIT_TIME=30
-NUMBER_OF_PAGES=9
+
 
 
 class BackButtonTester(unittest.TestCase):
@@ -18,16 +18,23 @@ class BackButtonTester(unittest.TestCase):
             		self._browser = webdriver.Remote(desired_capabilities = {"platform": param[2],"browserName": param[3], "version": param[4]})
         	else:
             		self._browser = webdriver.Remote(desired_capabilities = {"platform": param[2],"browserName": param[3]})
+                    
+            	if param[1] == "http://gbserver3.cs.unc.edu":
+                	self._book = "http://gbserver3.cs.unc.edu/2011/02/28/mice-like-to-play-and-hide/6/"
+                   	self._numPages = 5
+            	else:
+                	self._book= "http://tarheelreader.org/2013/11/18/tarheelreadertestbook/5/"
+                    	self._numPages = 6
 		
 	def test_back_button(self):
 		"""Runs the back button test for Tar Heel Reader
 		"""
 
-		self._browser.get("http://tarheelreader.org/2010/08/26/i-like-sonic-cartoons/9/")
+		self._browser.get(self._book)
 		self._browser.implicitly_wait(MAX_WAIT_TIME)
 
 		#Read one page at a time of current book
-		for i in range(0, NUMBER_OF_PAGES):
+		for i in range(0, self._numPages):
 			try:
 				time.sleep(3.0)
 
