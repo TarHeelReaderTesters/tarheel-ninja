@@ -101,9 +101,11 @@ class imageComparison(unittest.TestCase):
     
     def setUp(self):
         self.url = str(param[0])
-        if self.url == "tarheelreader":
+        if "tarheelreader" in self.url:
+            self.url = "tarheelreader"
             self.name = ['page2.png', 'page3.png', 'page4.png', 'page5_japanese.png', 'title.png']
         else:
+            self.url = "GBserver3"
             self.name = ['page2.png', 'page3.png', 'page4.png', 'page5.png', 'page6.png', 'title.png']
     
 

@@ -13,11 +13,11 @@ def scripts():
     print 'python '+script+' '+url+' MAC firefox'
     #Mac scripts
     processes.append(Popen ('python '+script+' '+url+' MAC firefox'))
-    #processes.append(Popen ('python '+script+' '+url+' MAC chrome',stdout=file, stderr=file, shell=True))
-    #processes.append(Popen ('python '+script+' '+url+' MAC safari',stdout=file, stderr=file, shell=True))
+    processes.append(Popen ('python '+script+' '+url+' MAC chrome',stdout=file, stderr=file, shell=True))
+    processes.append(Popen ('python '+script+' '+url+' MAC safari',stdout=file, stderr=file, shell=True))
     #Windows scripts
-    #processes.append(Popen ('python '+script+' '+url+' WINDOWS iexplore 8',stdout=file, stderr=file, shell=True))
-    #processes.append(Popen ('python '+script+' '+url+' WINDOWS iexplore 10',stdout=file, stderr=file, shell=True))
+    processes.append(Popen ('python '+script+' '+url+' WINDOWS iexplore 8',stdout=file, stderr=file, shell=True))
+    processes.append(Popen ('python '+script+' '+url+' WINDOWS iexplore 10',stdout=file, stderr=file, shell=True))
 
 
     for subprocess in processes:

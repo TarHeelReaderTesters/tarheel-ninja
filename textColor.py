@@ -1,70 +1,104 @@
+import unittest
 from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import Select
+from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import NoSuchElementException
-import unittest, time, re
-import sys
+from selenium.webdriver.common.keys import Keys
+from selenium.common.exceptions import StaleElementReferenceException
+import time, re, sys
 
-class testTextColor(unittest.TestCase):
-    def setUp(self):
-        self.url = param[1]
+MAX_WAIT_TIME = 10
 
-        if len(param) == 5:
-            self._browser = webdriver.Remote(desired_capabilities = {"platform": param[2],"browserName": param[3], "version": param[4]})
-        else:
-            self._browser = webdriver.Remote(desired_capabilities = {"platform": param[2],"browserName": param[3]})
-            
-        self._browser.implicitly_wait(30)
-        self.verificationErrors = []
-        self.accept_next_alert = True
-    
-    def test_text_color(self):
-        self._browser.get(self.url + '/' + "2013/11/18/tarheelreadertestbook/")
-        self._browser.find_element_by_css_selector("img[alt=\"Settings\"]").click()
-        self._browser.find_element_by_css_selector("span.colors").click()
-        self._browser.find_element_by_css_selector("li.textColors > span").click()
-        self._browser.find_element_by_xpath("//li[2]/ul/li[7]/span").click()
-
-        rgb = self._browser.find_element_by_xpath("//div[contains(@class,'thr-book-page')]").value_of_css_property('color')
-           
-        print rgb
-        if rgb == "rgba(255, 255, 255, 1)":
-                print "text color values are equal"
-
-        else:
-            print "text color values are not equal"
-    
-
-    def tearDown(self):
-        if len(param) == 5:
-            print '\nTest: ' + param[0]
-            print 'URL: ' + param[1]
-            print 'Platform: ' + param[2]
-            print 'Browser: ' + param[3]
-            print 'Version: ' + param[4]
+#testing background colors
+class testBackgroundColor(unittest.TestCase):
+        def setUp(self):
         
-        else:
-            print '\nTest: ' + param[0]
-            print 'URL: ' + param[1]
-            print 'Platform: ' + param[2]
-            print 'Browser: ' + param[3]
-        self._browser.quit()
+		#check How many arguments were passed in (OS Browser Version) or (OS Browser)
+		self._url = str(param[1])
+		if len(param) == 5:
+                	self._browser = webdriver.Remote(desired_capabilities = {"platform": param[2],"browserName": param[3], "version": param[4]})
+            	else:
+                	self._browser = webdriver.Remote(desired_capabilities = {"platform": param[2],"browserName": param[3]})
+                
+                if self._url == "http://gbserver3.cs.unc.edu":
+                    
+                    self.base_url  = "http://gbserver3.cs.unc.edu/2011/02/28/mice-like-to-play-and-hide/"
+                else:
+                    self.base_url  = "http://tarheelreader.org/2013/11/18/tarheelreadertestbook/"
+
+
+        def test_background_color(self):
+            browser = self._browser
+            browser.get(self.base_url)
+            try:
+                settings = browser.find_element_by_xpath("//img[contains(@src,'images/settings.png')]")# Find the settings menu
+                WebDriverWait(browser, MAX_WAIT_TIME).until(lambda s: s.find_element_by_xpath("//img[contains(@src,'images/settings.png')]").is_displayed())
+                settings.click()
+                if "gbserver3" in self.base_url:
+                    settings.click()
+                
+                WebDriverWait(browser, MAX_WAIT_TIME).until(lambda s: s.find_element_by_xpath("//img[contains(@src,'images/settings.png')]").is_displayed())
+                
+                colors = browser.find_element_by_xpath("//span[contains(@class,'colors')]")# Find the Colors menu
+                WebDriverWait(browser, MAX_WAIT_TIME).until(lambda s: s.find_element_by_xpath("//span[contains(@class,'colors')]").is_displayed())
+                colors.click()
+                
+                textColor = browser.find_element_by_xpath("//span[contains(text(),'Text Color')]")# Find the Text Color Button menu
+                WebDriverWait(browser, MAX_WAIT_TIME).until(lambda s: s.find_element_by_xpath("//span[contains(text(),'Text Color')]").is_displayed())
+                textColor.click()
+                
+                subMenu = textColor.find_element_by_xpath("//ul[contains(@class,'innerSubmenu')]")
+                
+                colorSelectElement = subMenu.find_element_by_xpath("//span[contains(@class,'magenta')]")# choose a color
+                WebDriverWait(subMenu, MAX_WAIT_TIME).until(lambda s: s.find_element_by_xpath("//span[contains(@class,'magenta')]").is_displayed())
+                
+                colorSelectElement.click()
+
+
+                rgb = browser.find_element_by_xpath("//div[contains(@class,'thr-book-page')]").value_of_css_property('background-color')
+           
+                print rgb
+                if rgb == "rgba(255, 0, 255, 1)" or "#f0f":
+                        print "text color values are equal"
+
+                else:
+                    print "text color values are not equal"
+                
+            except:
+                assert 0, "Could not select color"
+        
+
+        def tearDown(self):
+            """Closes the browser when the program exits
+            """
+            time.sleep(5.0)
+            if len(param) == 5:
+                print '\nTest: ' + param[0]
+                print 'URL: ' + param[1]
+                print 'Platform: ' + param[2]
+                print 'Browser: ' + param[3]
+                print 'Version: ' + param[4]
+            else:
+                print '\nTest: ' + param[0]
+                print 'URL: ' + param[1]
+                print 'Platform: ' + param[2]
+                print 'Browser: ' + param[3]
+            self._browser.quit()
+
 
 if __name__ == "__main__":
-    param = []
-    if len(sys.argv) == 5:
-        param.append(sys.argv[0])
-        param.append(sys.argv[1])
-        param.append(sys.argv[2])
-        param.append(sys.argv[3])
-        param.append(sys.argv[4])
-        del sys.argv[1:]
-    else:
-        param.append(sys.argv[0])
-        param.append(sys.argv[1])
-        param.append(sys.argv[2])
-        param.append(sys.argv[3])
-        del sys.argv[1:]
+        param = []
+        if len(sys.argv) == 5:
+                param.append(sys.argv[0])
+                param.append(sys.argv[1])
+                param.append(sys.argv[2])
+                param.append(sys.argv[3])
+                param.append(sys.argv[4])
+                del sys.argv[1:]
+        else:
+            param.append(sys.argv[0])
+            param.append(sys.argv[1])
+            param.append(sys.argv[2])
+            param.append(sys.argv[3])
+            del sys.argv[1:]
+        unittest.main()
 
-    unittest.main()

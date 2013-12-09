@@ -35,7 +35,7 @@ file = open(log, 'w')
 
 def scripts():
     global processes, url
-    scriptNames = ["mainMenu.py","login.py", "searchBook.py", "readBook.py", "readJapaneseContent.py", "captureNewPics.py", "imageComparison.py","bookContent.py","backgroundColor.py", "textColor.py"]
+    scriptNames = ["searchBook.py","mainMenu.py","login.py", "readBook.py", "readJapaneseContent.py", "captureNewPics.py", "imageComparison.py","bookContentReader.py","backgroundColor.py", "textColor.py"]
     for script in scriptNames:
             print 'Starting tests on script: ' + script
             if script == "login.py":
@@ -50,8 +50,9 @@ def scripts():
             processes.append(Popen ('python '+script+' '+url+' WINDOWS iexplore 8',stdout=file, stderr=file, shell=True))
             processes.append(Popen ('python '+script+' '+url+' WINDOWS iexplore 10',stdout=file, stderr=file, shell=True))
 
-    for subprocess in processes:
-            subprocess.wait()
+            for subprocess in processes:
+                    subprocess.wait()
+            processes = []
 
 if __name__ == '__main__':
     scripts()
