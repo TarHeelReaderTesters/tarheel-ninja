@@ -6,66 +6,66 @@ import unittest
 
 
 
-def compareMacSafari(pages):
+def compareMacSafari(pages,url):
     result = ''
     for p in pages:
-        f1 = 'images/base/MAC/safari/' + p
-        f2 = 'images/new/MAC/safari/' + p
+        f1 = 'images/'+url+'/base/MAC/safari/' + p
+        f2 = 'images/'+url+'/new/MAC/safari/' + p
         result += (compare(f1,f2))
         if result == 'Unable to compute image difference':
             print result
             break
     runMessage(f1,f2,result,pages)
 
-def compareMacFirefox(pages):
+def compareMacFirefox(pages,url):
     result = ''
     for p in pages:
-        f1 = 'images/base/MAC/firefox/' + p
-        f2 = 'images/new/MAC/firefox/' + p
+        f1 = 'images/'+url+'/base/MAC/firefox/' + p
+        f2 = 'images/'+url+'/new/MAC/firefox/' + p
         result += (compare(f1,f2))
         if result == 'Unable to compute image difference':
             print result
             break
     runMessage(f1,f2,result,pages)
 
-def compareWindowFirefox(pages):
+def compareWindowFirefox(pages,url):
     result = ''
     for p in pages:
-        f1 = 'images/base/WINDOWS/firefox/' + p
-        f2 = 'images/new/WINDOWS/firefox/' + p
+        f1 = 'images/'+url+'/base/WINDOWS/firefox/' + p
+        f2 = 'images/'+url+'/new/WINDOWS/firefox/' + p
+        result += (compare(f1,f2))
+        if result == 'Unable to compute image difference':
+            print result
+            break
+    runMessage(f1,f2,result,pages,url)
+
+def compareWindowChrome(pages,url):
+    result = ''
+    for p in pages:
+        f1 = 'images/'+url+'/base/WINDOWS/chrome/' + p
+        f2 = 'images/'+url+'/new/WINDOWS/chrome/' + p
         result += (compare(f1,f2))
         if result == 'Unable to compute image difference':
             print result
             break
     runMessage(f1,f2,result,pages)
 
-def compareWindowChrome(pages):
+def compareWindowIE10(pages,url):
     result = ''
     for p in pages:
-        f1 = 'images/base/WINDOWS/chrome/' + p
-        f2 = 'images/new/WINDOWS/chrome/' + p
+        f1 = 'images/'+url+'/base/WINDOWS/iexplore10/' + p
+        f2 = 'images/'+url+'/new/WINDOWS/iexplore10/' + p
         result += (compare(f1,f2))
         if result == 'Unable to compute image difference':
             print result
             break
     runMessage(f1,f2,result,pages)
 
-def compareWindowIE10(pages):
+def compareWindowIE8(pages,url):
     result = ''
     for p in pages:
-        f1 = 'images/base/WINDOWS/iexplore10/' + p
-        f2 = 'images/new/WINDOWS/iexplore10/' + p
-        result += (compare(f1,f2))
-        if result == 'Unable to compute image difference':
-            print result
-            break
-    runMessage(f1,f2,result,pages)
-
-def compareWindowIE8(pages):
-    result = ''
-    for p in pages:
-        f1 = 'images/base/WINDOWS/iexplore8/' + p
-        f2 = 'images/new/WINDOWS/iexplore8/' + p
+        f1 = 'images/'+url+'/base/WINDOWS/iexplore8/' + p
+        f2 = 'images/'+url+'/new/WINDOWS/iexplore8/' + p
         result += (compare(f1,f2))
         if result == 'Unable to compute image difference':
             print result
@@ -98,25 +98,33 @@ def compare(file1, file2):
             return '0'
 
 class imageComparison(unittest.TestCase):
-
+    
     def setUp(self):
-        self.name = ['page2.png', 'page3.png', 'page4.png', 'page5_japanese.png', 'title.png']
+        self.url = str(param[0])
+        if self.url == "tarheelreader":
+            self.name = ['page2.png', 'page3.png', 'page4.png', 'page5_japanese.png', 'title.png']
+        else:
+            self.name = ['page2.png', 'page3.png', 'page4.png', 'page5.png', 'page6.png', 'title.png']
+    
 
     def test_compareMacSafari(self):
-        compareMacSafari(self.name)
-
+        compareMacSafari(self.name,self.url)
+"""
     def test_compareWindowFirefox(self):
-        compareWindowFirefox(self.name)
+        compareWindowFirefox(self.name,self.url)
 
     def test_compareWindowChrome(self):
-        compareWindowChrome(self.name)
-"""
+        compareWindowChrome(self.name,self.url)
+
     def test_compareWindowIE10(self):
-        compareWindowIE10(self.name)
+        compareWindowIE10(self.name,self.url)
 
     def test_compareWindowIE8(self):
-        compareWindowIE8(self.name)
+        compareWindowIE8(self.name,self.url)
 """
 
 if __name__== '__main__':
+        param=[]
+        param.append(sys.argv[1])
+        del sys.argv[1:]
         unittest.main()

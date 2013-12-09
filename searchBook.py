@@ -11,7 +11,7 @@ MAX_WAIT_TIME=30
 class searchBook(unittest.TestCase):
     
     def setUp(self):
-        self.url = param[1]
+        self._url = param[1]
 
         if len(param) == 5:
             self._browser = webdriver.Remote(desired_capabilities = {"platform": param[2],"browserName": param[3], "version": param[4]})
@@ -22,8 +22,12 @@ class searchBook(unittest.TestCase):
         """Runs the book searching test for Tar Heel Reader
         """
 
-        #Load home page of Tar Heel Reader
-        self._browser.get("http://gbserver3.cs.unc.edu")
+        #Load home page
+	if("http://gbserver3.cs.unc.edu" in self._url):
+       	    self._browser.get("http://gbserver3.cs.unc.edu")
+	else:
+	    self._browser.get("http://tarheelreader.org")
+
         assert "Tar Heel Reader" in self._browser.title
         
         #Click on find book button

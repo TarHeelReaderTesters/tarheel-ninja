@@ -3,9 +3,15 @@ import time
 import os.path
 import sys
 
-
 processes = []
+
+if(len(sys.argv)!=2):
+        print "Invalid number of parameters!"
+        print "Format is: %s <url>" % (sys.argv[0],)
+	sys.exit(1)
+
 url = str(sys.argv[1])
+
 #name the logfile using current date
 log = 'log/thrt_' + time.strftime('%d%m%y-00')
 
@@ -28,11 +34,10 @@ file = open(log, 'w')
 #add scripts to run in parallel
 
 def scripts():
-    global url
-    #scriptNames = ["login.py","mainMenu.py", "searchBook.py", "readBook.py", "readJapaneseContent.py", "captureNewPics.py", "imageComparison.py","bookContent.py","backgroundColor.py", "textColor.py"]
-    scriptNames = ["login.py"]
+    global processes, url
+    scriptNames = ["mainMenu.py","login.py", "searchBook.py", "readBook.py", "readJapaneseContent.py", "captureNewPics.py", "imageComparison.py","bookContent.py","backgroundColor.py", "textColor.py"]
     for script in scriptNames:
-            print 'Current script: ' + script
+            print 'Starting tests on script: ' + script
             if script == "login.py":
             #login.py has extra parameters
                 script="login.py "+url+" tarheelreadertesters 40m4h99"
@@ -45,9 +50,8 @@ def scripts():
             processes.append(Popen ('python '+script+' '+url+' WINDOWS iexplore 8',stdout=file, stderr=file, shell=True))
             processes.append(Popen ('python '+script+' '+url+' WINDOWS iexplore 10',stdout=file, stderr=file, shell=True))
 
-
     for subprocess in processes:
-        subprocess.wait()
+            subprocess.wait()
 
 if __name__ == '__main__':
-     scripts()
+    scripts()

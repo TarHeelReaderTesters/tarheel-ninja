@@ -9,13 +9,13 @@ import unittest
 
 MAX_WAIT_TIME=30
 
-class login(unittest.TestCase):
+class Login(unittest.TestCase):
     def setUp(self):
         if len(param) == 7:
             self._browser = webdriver.Remote(desired_capabilities = {"platform": param[4],"browserName": param[5], "version": param[6]})
         else:
             self._browser = webdriver.Remote(desired_capabilities = {"platform": param[4],"browserName": param[5]})
-        self.url = param[1]
+        self._url = param[1]
         self.username = param[2]
         self.password = param[3]
         
@@ -28,7 +28,7 @@ class login(unittest.TestCase):
 
     def test_login(self):
 	#Runs the login test for Tar Heel Reader
-        self._browser.get(self.url + '/login') # Load tar heel reader
+        self._browser.get(self._url + '/login') # Load tar heel reader
         assert "Tar Heel Reader" in self._browser.title
         
 	self._browser.implicitly_wait(MAX_WAIT_TIME)
@@ -43,16 +43,18 @@ class login(unittest.TestCase):
             usernameField.send_keys(self.username)
             passwordField.send_keys(self.password)
             loginButton.click()
-            
+                 
             if self.is_present() == False:
-                print ""
+                try:
+                    assert "tarheelreader.org" in self._browser.current_url
+		    print "Successful login!"
+                except AssertionError:
+                    print "Did not successfully login"
             else:
                 print "Login Failed"
 
-        
         except NoSuchElementException:
             assert 0, "Unable to login"
-
 
     def tearDown(self):
         #Closes the browser when the program exits
@@ -90,4 +92,5 @@ if __name__ == '__main__':
         param.append(sys.argv[4])
         param.append(sys.argv[5])
         del sys.argv[1:]
+
     unittest.main()

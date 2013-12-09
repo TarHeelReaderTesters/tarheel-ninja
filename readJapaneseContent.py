@@ -8,7 +8,6 @@ import unittest
 
 MAX_WAIT_TIME=30
 
-
 class JapaneseContentReader(unittest.TestCase):
 	def setUp(self):
 		#check How many arguments were passed in (OS Browser Version) or (OS Browser)
@@ -52,8 +51,10 @@ class JapaneseContentReader(unittest.TestCase):
        		self._browser.implicitly_wait(MAX_WAIT_TIME)
 
 		line_number=0
-		error=False
-        
+		error=""
+        	
+		previous_url=self._browser.current_url
+
         	if param[1] == "http://gbserver3.cs.unc.edu":
             		count = 6
         	else:
@@ -71,7 +72,7 @@ class JapaneseContentReader(unittest.TestCase):
 					text_elements=caption_box_element.find_elements_by_xpath("//p[contains(@class, 'VOSay')]")
 
 					if(len(text_elements)==0):
-						error=True
+						error="No caption element found!"
 					else:
 						text_element=text_elements[0]
 						for paragraph in text_elements:
@@ -79,7 +80,7 @@ class JapaneseContentReader(unittest.TestCase):
 								text_element=paragraph
 								break
 						if(text_element.text!=lineToLookFor):
-							error=True
+							error="Wrong text on page "+str(line_number)+" of book!" 
 
 					line_number+=1
 
@@ -89,29 +90,38 @@ class JapaneseContentReader(unittest.TestCase):
 					authorToLookFor=self._lines[1]
 
 					content_wrap=self._browser.find_element_by_xpath("//div[contains(@class, 'content-wrap') and not (contains(@style, 'display:none') or contains(@style, 'display: none') or contains(@style, 'visibility:hidden') or contains(@style, 'visibility: hidden'))]")
-					title_element=content_wrap.find_element_by_class_name("title")
-					author_element=content_wrap.find_element_by_class_name("thr-author")
+					title_elements=content_wrap.find_elements_by_class_name("title")
+					author_elements=content_wrap.find_elements_by_class_name("thr-author")
 
-                                        if(title_element.text!=titleToLookFor):
-                                                error=True
+					if(len(title_elements)==0):
+						error="No title text element found!"
+                                        elif(title_elements[0].text!=titleToLookFor):
+                                                error="Wrong title found!"
 
-                                        if(author_element.text!=authorToLookFor):
-                                                error=True
+					if(len(author_elements)==0):
+						error="No author text element found!"
+                                        elif(author_elements[0].text!=authorToLookFor):
+                                                error="Wrong author found!"
 
 					line_number=2
 
 				nextPageLink=self._browser.find_element_by_link_text("Next")
 				nextPageLink.click()
 
+				if(previous_url==self._browser.current_url):
+					error="Next button did not work!"
+					break
+
+				previous_url=self._browser.current_url
+
 			except NoSuchElementException:
-				print "Error reading book"
-				error=True
+				error="Error reading book"
 				break
 
 
 		#Has the test failed or not?
-		if(error==True):
-			assert 0, "Japanese text is incorrect"
+		if(error!=""):
+			assert 0, error
 
 	def tearDown(self):
 		"""Closes the browser when the program exits

@@ -59,7 +59,7 @@ class screenshot(unittest.TestCase):
             screenshot_name = ['title', 'page2', 'page3', 'page4', 'page5', 'page6']
             
             #takes a screenshot for every page in the url array
-            for i in range(5):
+            for i in range(6):
                 name = screenshot_name[i] + '.png'
                 self._browser.get(url[i])
                 time.sleep(3.0)

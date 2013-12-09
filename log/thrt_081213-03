@@ -1,0 +1,869 @@
+.
+----------------------------------------------------------------------
+Ran 1 test in 43.453s
+
+OK
+Successful login!
+
+Test: login.py
+Url: http://tarheelreader.org
+Platform: WINDOWS
+Browser: iexplore
+Version: 8
+.
+----------------------------------------------------------------------
+Ran 1 test in 43.712s
+
+OK
+Successful login!
+
+Test: login.py
+Url: http://tarheelreader.org
+Platform: MAC
+Browser: safari
+.
+----------------------------------------------------------------------
+Ran 1 test in 43.870s
+
+OK
+Successful login!
+
+Test: login.py
+Url: http://tarheelreader.org
+Platform: MAC
+Browser: chrome
+.
+----------------------------------------------------------------------
+Ran 1 test in 44.743s
+
+OK
+Successful login!
+
+Test: login.py
+Url: http://tarheelreader.org
+Platform: MAC
+Browser: firefox
+.
+----------------------------------------------------------------------
+Ran 1 test in 182.547s
+
+OK
+Successful login!
+
+Test: login.py
+Url: http://tarheelreader.org
+Platform: WINDOWS
+Browser: iexplore
+Version: 10
+IndexError: list index out of range
+IndexError: list index out of range
+IndexError: list index out of range
+E
+======================================================================
+ERROR: test_main_menu (__main__.MainMenu)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+WebDriverException: Message: u'Error forwarding the new session cannot find : {platform=iexplore, browserName=10}' ; Stacktrace: 
+    at org.openqa.grid.web.servlet.handler.RequestHandler.process (RequestHandler.java:112)
+    at org.openqa.grid.web.servlet.DriverServlet.process (DriverServlet.java:84)
+    at org.openqa.grid.web.servlet.DriverServlet.doPost (DriverServlet.java:68)
+    at javax.servlet.http.HttpServlet.service (HttpServlet.java:727)
+    at javax.servlet.http.HttpServlet.service (HttpServlet.java:820)
+    at org.seleniumhq.jetty7.servlet.ServletHolder.handle (ServletHolder.java:565)
+    at org.seleniumhq.jetty7.servlet.ServletHandler.doHandle (ServletHandler.java:479)
+    at org.seleniumhq.jetty7.server.session.SessionHandler.doHandle (SessionHandler.java:225)
+    at org.seleniumhq.jetty7.server.handler.ContextHandler.doHandle (ContextHandler.java:1031)
+    at org.seleniumhq.jetty7.servlet.ServletHandler.doScope (ServletHandler.java:406)
+    at org.seleniumhq.jetty7.server.session.SessionHandler.doScope (SessionHandler.java:186)
+    at org.seleniumhq.jetty7.server.handler.ContextHandler.doScope (ContextHandler.java:965)
+    at org.seleniumhq.jetty7.server.handler.ScopedHandler.handle (ScopedHandler.java:117)
+    at org.seleniumhq.jetty7.server.handler.HandlerWrapper.handle (HandlerWrapper.java:111)
+    at org.seleniumhq.jetty7.server.Server.handle (Server.java:349)
+    at org.seleniumhq.jetty7.server.AbstractHttpConnection.handleRequest (AbstractHttpConnection.java:452)
+    at org.seleniumhq.jetty7.server.BlockingHttpConnection.handleRequest (BlockingHttpConnection.java:47)
+    at org.seleniumhq.jetty7.server.AbstractHttpConnection.content (AbstractHttpConnection.java:894)
+    at org.seleniumhq.jetty7.server.AbstractHttpConnection$RequestHandler.content (AbstractHttpConnection.java:948)
+    at org.seleniumhq.jetty7.http.HttpParser.parseNext (HttpParser.java:857)
+    at org.seleniumhq.jetty7.http.HttpParser.parseAvailable (HttpParser.java:235)
+    at org.seleniumhq.jetty7.server.BlockingHttpConnection.handle (BlockingHttpConnection.java:66)
+    at org.seleniumhq.jetty7.server.bio.SocketConnector$ConnectorEndPoint.run (SocketConnector.java:254)
+    at org.seleniumhq.jetty7.util.thread.QueuedThreadPool.runJob (QueuedThreadPool.java:599)
+    at org.seleniumhq.jetty7.util.thread.QueuedThreadPool$3.run (QueuedThreadPool.java:534)
+    at java.lang.Thread.run (Thread.java:695) 
+
+----------------------------------------------------------------------
+Ran 1 test in 0.008s
+
+FAILED (errors=1)
+E
+======================================================================
+ERROR: test_main_menu (__main__.MainMenu)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+WebDriverException: Message: u'Error forwarding the new session cannot find : {platform=iexplore, browserName=8}' ; Stacktrace: 
+    at org.openqa.grid.web.servlet.handler.RequestHandler.process (RequestHandler.java:112)
+    at org.openqa.grid.web.servlet.DriverServlet.process (DriverServlet.java:84)
+    at org.openqa.grid.web.servlet.DriverServlet.doPost (DriverServlet.java:68)
+    at javax.servlet.http.HttpServlet.service (HttpServlet.java:727)
+    at javax.servlet.http.HttpServlet.service (HttpServlet.java:820)
+    at org.seleniumhq.jetty7.servlet.ServletHolder.handle (ServletHolder.java:565)
+    at org.seleniumhq.jetty7.servlet.ServletHandler.doHandle (ServletHandler.java:479)
+    at org.seleniumhq.jetty7.server.session.SessionHandler.doHandle (SessionHandler.java:225)
+    at org.seleniumhq.jetty7.server.handler.ContextHandler.doHandle (ContextHandler.java:1031)
+    at org.seleniumhq.jetty7.servlet.ServletHandler.doScope (ServletHandler.java:406)
+    at org.seleniumhq.jetty7.server.session.SessionHandler.doScope (SessionHandler.java:186)
+    at org.seleniumhq.jetty7.server.handler.ContextHandler.doScope (ContextHandler.java:965)
+    at org.seleniumhq.jetty7.server.handler.ScopedHandler.handle (ScopedHandler.java:117)
+    at org.seleniumhq.jetty7.server.handler.HandlerWrapper.handle (HandlerWrapper.java:111)
+    at org.seleniumhq.jetty7.server.Server.handle (Server.java:349)
+    at org.seleniumhq.jetty7.server.AbstractHttpConnection.handleRequest (AbstractHttpConnection.java:452)
+    at org.seleniumhq.jetty7.server.BlockingHttpConnection.handleRequest (BlockingHttpConnection.java:47)
+    at org.seleniumhq.jetty7.server.AbstractHttpConnection.content (AbstractHttpConnection.java:894)
+    at org.seleniumhq.jetty7.server.AbstractHttpConnection$RequestHandler.content (AbstractHttpConnection.java:948)
+    at org.seleniumhq.jetty7.http.HttpParser.parseNext (HttpParser.java:857)
+    at org.seleniumhq.jetty7.http.HttpParser.parseAvailable (HttpParser.java:235)
+    at org.seleniumhq.jetty7.server.BlockingHttpConnection.handle (BlockingHttpConnection.java:66)
+    at org.seleniumhq.jetty7.server.bio.SocketConnector$ConnectorEndPoint.run (SocketConnector.java:254)
+    at org.seleniumhq.jetty7.util.thread.QueuedThreadPool.runJob (QueuedThreadPool.java:599)
+    at org.seleniumhq.jetty7.util.thread.QueuedThreadPool$3.run (QueuedThreadPool.java:534)
+    at java.lang.Thread.run (Thread.java:695) 
+
+----------------------------------------------------------------------
+Ran 1 test in 0.009s
+
+FAILED (errors=1)
+Traceback (most recent call last):
+  File "searchBook.py", line 110, in <module>
+    param.append(sys.argv[3])
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "searchBook.py", line 110, in <module>
+    param.append(sys.argv[3])
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "searchBook.py", line 110, in <module>
+    param.append(sys.argv[3])
+IndexError: list index out of range
+E
+======================================================================
+ERROR: test_searchBook (__main__.searchBook)
+Runs the book searching test for Tar Heel Reader
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "searchBook.py", line 19, in setUp
+    self._browser = webdriver.Remote(desired_capabilities = {"platform": param[2],"browserName": param[3]})
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/webdriver.py", line 72, in __init__
+    self.start_session(desired_capabilities, browser_profile)
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/webdriver.py", line 114, in start_session
+    'desiredCapabilities': desired_capabilities,
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/webdriver.py", line 165, in execute
+    self.error_handler.check_response(response)
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/errorhandler.py", line 164, in check_response
+    raise exception_class(message, screen, stacktrace)
+WebDriverException: Message: u'Error forwarding the new session cannot find : {platform=iexplore, browserName=8}' ; Stacktrace: 
+    at org.openqa.grid.web.servlet.handler.RequestHandler.process (RequestHandler.java:112)
+    at org.openqa.grid.web.servlet.DriverServlet.process (DriverServlet.java:84)
+    at org.openqa.grid.web.servlet.DriverServlet.doPost (DriverServlet.java:68)
+    at javax.servlet.http.HttpServlet.service (HttpServlet.java:727)
+    at javax.servlet.http.HttpServlet.service (HttpServlet.java:820)
+    at org.seleniumhq.jetty7.servlet.ServletHolder.handle (ServletHolder.java:565)
+    at org.seleniumhq.jetty7.servlet.ServletHandler.doHandle (ServletHandler.java:479)
+    at org.seleniumhq.jetty7.server.session.SessionHandler.doHandle (SessionHandler.java:225)
+    at org.seleniumhq.jetty7.server.handler.ContextHandler.doHandle (ContextHandler.java:1031)
+    at org.seleniumhq.jetty7.servlet.ServletHandler.doScope (ServletHandler.java:406)
+    at org.seleniumhq.jetty7.server.session.SessionHandler.doScope (SessionHandler.java:186)
+    at org.seleniumhq.jetty7.server.handler.ContextHandler.doScope (ContextHandler.java:965)
+    at org.seleniumhq.jetty7.server.handler.ScopedHandler.handle (ScopedHandler.java:117)
+    at org.seleniumhq.jetty7.server.handler.HandlerWrapper.handle (HandlerWrapper.java:111)
+    at org.seleniumhq.jetty7.server.Server.handle (Server.java:349)
+    at org.seleniumhq.jetty7.server.AbstractHttpConnection.handleRequest (AbstractHttpConnection.java:452)
+    at org.seleniumhq.jetty7.server.BlockingHttpConnection.handleRequest (BlockingHttpConnection.java:47)
+    at org.seleniumhq.jetty7.server.AbstractHttpConnection.content (AbstractHttpConnection.java:894)
+    at org.seleniumhq.jetty7.server.AbstractHttpConnection$RequestHandler.content (AbstractHttpConnection.java:948)
+    at org.seleniumhq.jetty7.http.HttpParser.parseNext (HttpParser.java:857)
+    at org.seleniumhq.jetty7.http.HttpParser.parseAvailable (HttpParser.java:235)
+    at org.seleniumhq.jetty7.server.BlockingHttpConnection.handle (BlockingHttpConnection.java:66)
+    at org.seleniumhq.jetty7.server.bio.SocketConnector$ConnectorEndPoint.run (SocketConnector.java:254)
+    at org.seleniumhq.jetty7.util.thread.QueuedThreadPool.runJob (QueuedThreadPool.java:599)
+    at org.seleniumhq.jetty7.util.thread.QueuedThreadPool$3.run (QueuedThreadPool.java:534)
+    at java.lang.Thread.run (Thread.java:695) 
+
+----------------------------------------------------------------------
+Ran 1 test in 0.008s
+
+FAILED (errors=1)
+E
+======================================================================
+ERROR: test_searchBook (__main__.searchBook)
+Runs the book searching test for Tar Heel Reader
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "searchBook.py", line 19, in setUp
+    self._browser = webdriver.Remote(desired_capabilities = {"platform": param[2],"browserName": param[3]})
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/webdriver.py", line 72, in __init__
+    self.start_session(desired_capabilities, browser_profile)
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/webdriver.py", line 114, in start_session
+    'desiredCapabilities': desired_capabilities,
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/webdriver.py", line 165, in execute
+    self.error_handler.check_response(response)
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/errorhandler.py", line 164, in check_response
+    raise exception_class(message, screen, stacktrace)
+WebDriverException: Message: u'Error forwarding the new session cannot find : {platform=iexplore, browserName=10}' ; Stacktrace: 
+    at org.openqa.grid.web.servlet.handler.RequestHandler.process (RequestHandler.java:112)
+    at org.openqa.grid.web.servlet.DriverServlet.process (DriverServlet.java:84)
+    at org.openqa.grid.web.servlet.DriverServlet.doPost (DriverServlet.java:68)
+    at javax.servlet.http.HttpServlet.service (HttpServlet.java:727)
+    at javax.servlet.http.HttpServlet.service (HttpServlet.java:820)
+    at org.seleniumhq.jetty7.servlet.ServletHolder.handle (ServletHolder.java:565)
+    at org.seleniumhq.jetty7.servlet.ServletHandler.doHandle (ServletHandler.java:479)
+    at org.seleniumhq.jetty7.server.session.SessionHandler.doHandle (SessionHandler.java:225)
+    at org.seleniumhq.jetty7.server.handler.ContextHandler.doHandle (ContextHandler.java:1031)
+    at org.seleniumhq.jetty7.servlet.ServletHandler.doScope (ServletHandler.java:406)
+    at org.seleniumhq.jetty7.server.session.SessionHandler.doScope (SessionHandler.java:186)
+    at org.seleniumhq.jetty7.server.handler.ContextHandler.doScope (ContextHandler.java:965)
+    at org.seleniumhq.jetty7.server.handler.ScopedHandler.handle (ScopedHandler.java:117)
+    at org.seleniumhq.jetty7.server.handler.HandlerWrapper.handle (HandlerWrapper.java:111)
+    at org.seleniumhq.jetty7.server.Server.handle (Server.java:349)
+    at org.seleniumhq.jetty7.server.AbstractHttpConnection.handleRequest (AbstractHttpConnection.java:452)
+    at org.seleniumhq.jetty7.server.BlockingHttpConnection.handleRequest (BlockingHttpConnection.java:47)
+    at org.seleniumhq.jetty7.server.AbstractHttpConnection.content (AbstractHttpConnection.java:894)
+    at org.seleniumhq.jetty7.server.AbstractHttpConnection$RequestHandler.content (AbstractHttpConnection.java:948)
+    at org.seleniumhq.jetty7.http.HttpParser.parseNext (HttpParser.java:857)
+    at org.seleniumhq.jetty7.http.HttpParser.parseAvailable (HttpParser.java:235)
+    at org.seleniumhq.jetty7.server.BlockingHttpConnection.handle (BlockingHttpConnection.java:66)
+    at org.seleniumhq.jetty7.server.bio.SocketConnector$ConnectorEndPoint.run (SocketConnector.java:254)
+    at org.seleniumhq.jetty7.util.thread.QueuedThreadPool.runJob (QueuedThreadPool.java:599)
+    at org.seleniumhq.jetty7.util.thread.QueuedThreadPool$3.run (QueuedThreadPool.java:534)
+    at java.lang.Thread.run (Thread.java:695) 
+
+----------------------------------------------------------------------
+Ran 1 test in 0.008s
+
+FAILED (errors=1)
+Traceback (most recent call last):
+  File "readBook.py", line 88, in <module>
+    param.append(sys.argv[3])
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "readBook.py", line 88, in <module>
+    param.append(sys.argv[3])
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "readBook.py", line 88, in <module>
+    param.append(sys.argv[3])
+IndexError: list index out of range
+E
+======================================================================
+ERROR: testReadBook (__main__.ReadBook)
+Runs the book reading test for Tar Heel Reader
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "readBook.py", line 18, in setUp
+    self._browser = webdriver.Remote(desired_capabilities = {"platform": param[2],"browserName": param[3]})
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/webdriver.py", line 72, in __init__
+    self.start_session(desired_capabilities, browser_profile)
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/webdriver.py", line 114, in start_session
+    'desiredCapabilities': desired_capabilities,
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/webdriver.py", line 165, in execute
+    self.error_handler.check_response(response)
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/errorhandler.py", line 164, in check_response
+    raise exception_class(message, screen, stacktrace)
+WebDriverException: Message: u'Error forwarding the new session cannot find : {platform=iexplore, browserName=10}' ; Stacktrace: 
+    at org.openqa.grid.web.servlet.handler.RequestHandler.process (RequestHandler.java:112)
+    at org.openqa.grid.web.servlet.DriverServlet.process (DriverServlet.java:84)
+    at org.openqa.grid.web.servlet.DriverServlet.doPost (DriverServlet.java:68)
+    at javax.servlet.http.HttpServlet.service (HttpServlet.java:727)
+    at javax.servlet.http.HttpServlet.service (HttpServlet.java:820)
+    at org.seleniumhq.jetty7.servlet.ServletHolder.handle (ServletHolder.java:565)
+    at org.seleniumhq.jetty7.servlet.ServletHandler.doHandle (ServletHandler.java:479)
+    at org.seleniumhq.jetty7.server.session.SessionHandler.doHandle (SessionHandler.java:225)
+    at org.seleniumhq.jetty7.server.handler.ContextHandler.doHandle (ContextHandler.java:1031)
+    at org.seleniumhq.jetty7.servlet.ServletHandler.doScope (ServletHandler.java:406)
+    at org.seleniumhq.jetty7.server.session.SessionHandler.doScope (SessionHandler.java:186)
+    at org.seleniumhq.jetty7.server.handler.ContextHandler.doScope (ContextHandler.java:965)
+    at org.seleniumhq.jetty7.server.handler.ScopedHandler.handle (ScopedHandler.java:117)
+    at org.seleniumhq.jetty7.server.handler.HandlerWrapper.handle (HandlerWrapper.java:111)
+    at org.seleniumhq.jetty7.server.Server.handle (Server.java:349)
+    at org.seleniumhq.jetty7.server.AbstractHttpConnection.handleRequest (AbstractHttpConnection.java:452)
+    at org.seleniumhq.jetty7.server.BlockingHttpConnection.handleRequest (BlockingHttpConnection.java:47)
+    at org.seleniumhq.jetty7.server.AbstractHttpConnection.content (AbstractHttpConnection.java:894)
+    at org.seleniumhq.jetty7.server.AbstractHttpConnection$RequestHandler.content (AbstractHttpConnection.java:948)
+    at org.seleniumhq.jetty7.http.HttpParser.parseNext (HttpParser.java:857)
+    at org.seleniumhq.jetty7.http.HttpParser.parseAvailable (HttpParser.java:235)
+    at org.seleniumhq.jetty7.server.BlockingHttpConnection.handle (BlockingHttpConnection.java:66)
+    at org.seleniumhq.jetty7.server.bio.SocketConnector$ConnectorEndPoint.run (SocketConnector.java:254)
+    at org.seleniumhq.jetty7.util.thread.QueuedThreadPool.runJob (QueuedThreadPool.java:599)
+    at org.seleniumhq.jetty7.util.thread.QueuedThreadPool$3.run (QueuedThreadPool.java:534)
+    at java.lang.Thread.run (Thread.java:695) 
+
+----------------------------------------------------------------------
+Ran 1 test in 0.010s
+
+FAILED (errors=1)
+E
+======================================================================
+ERROR: testReadBook (__main__.ReadBook)
+Runs the book reading test for Tar Heel Reader
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "readBook.py", line 18, in setUp
+    self._browser = webdriver.Remote(desired_capabilities = {"platform": param[2],"browserName": param[3]})
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/webdriver.py", line 72, in __init__
+    self.start_session(desired_capabilities, browser_profile)
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/webdriver.py", line 114, in start_session
+    'desiredCapabilities': desired_capabilities,
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/webdriver.py", line 165, in execute
+    self.error_handler.check_response(response)
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/errorhandler.py", line 164, in check_response
+    raise exception_class(message, screen, stacktrace)
+WebDriverException: Message: u'Error forwarding the new session cannot find : {platform=iexplore, browserName=8}' ; Stacktrace: 
+    at org.openqa.grid.web.servlet.handler.RequestHandler.process (RequestHandler.java:112)
+    at org.openqa.grid.web.servlet.DriverServlet.process (DriverServlet.java:84)
+    at org.openqa.grid.web.servlet.DriverServlet.doPost (DriverServlet.java:68)
+    at javax.servlet.http.HttpServlet.service (HttpServlet.java:727)
+    at javax.servlet.http.HttpServlet.service (HttpServlet.java:820)
+    at org.seleniumhq.jetty7.servlet.ServletHolder.handle (ServletHolder.java:565)
+    at org.seleniumhq.jetty7.servlet.ServletHandler.doHandle (ServletHandler.java:479)
+    at org.seleniumhq.jetty7.server.session.SessionHandler.doHandle (SessionHandler.java:225)
+    at org.seleniumhq.jetty7.server.handler.ContextHandler.doHandle (ContextHandler.java:1031)
+    at org.seleniumhq.jetty7.servlet.ServletHandler.doScope (ServletHandler.java:406)
+    at org.seleniumhq.jetty7.server.session.SessionHandler.doScope (SessionHandler.java:186)
+    at org.seleniumhq.jetty7.server.handler.ContextHandler.doScope (ContextHandler.java:965)
+    at org.seleniumhq.jetty7.server.handler.ScopedHandler.handle (ScopedHandler.java:117)
+    at org.seleniumhq.jetty7.server.handler.HandlerWrapper.handle (HandlerWrapper.java:111)
+    at org.seleniumhq.jetty7.server.Server.handle (Server.java:349)
+    at org.seleniumhq.jetty7.server.AbstractHttpConnection.handleRequest (AbstractHttpConnection.java:452)
+    at org.seleniumhq.jetty7.server.BlockingHttpConnection.handleRequest (BlockingHttpConnection.java:47)
+    at org.seleniumhq.jetty7.server.AbstractHttpConnection.content (AbstractHttpConnection.java:894)
+    at org.seleniumhq.jetty7.server.AbstractHttpConnection$RequestHandler.content (AbstractHttpConnection.java:948)
+    at org.seleniumhq.jetty7.http.HttpParser.parseNext (HttpParser.java:857)
+    at org.seleniumhq.jetty7.http.HttpParser.parseAvailable (HttpParser.java:235)
+    at org.seleniumhq.jetty7.server.BlockingHttpConnection.handle (BlockingHttpConnection.java:66)
+    at org.seleniumhq.jetty7.server.bio.SocketConnector$ConnectorEndPoint.run (SocketConnector.java:254)
+    at org.seleniumhq.jetty7.util.thread.QueuedThreadPool.runJob (QueuedThreadPool.java:599)
+    at org.seleniumhq.jetty7.util.thread.QueuedThreadPool$3.run (QueuedThreadPool.java:534)
+    at java.lang.Thread.run (Thread.java:695) 
+
+----------------------------------------------------------------------
+Ran 1 test in 0.010s
+
+FAILED (errors=1)
+Traceback (most recent call last):
+  File "readJapaneseContent.py", line 156, in <module>
+    param.append(sys.argv[3])
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "readJapaneseContent.py", line 156, in <module>
+    param.append(sys.argv[3])
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "readJapaneseContent.py", line 156, in <module>
+    param.append(sys.argv[3])
+IndexError: list index out of range
+E
+======================================================================
+ERROR: test_book_reading (__main__.JapaneseContentReader)
+Runs the book reading test for Tar Heel Reader
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "readJapaneseContent.py", line 18, in setUp
+    self._browser = webdriver.Remote(desired_capabilities = {"platform": param[2],"browserName": param[3]})
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/webdriver.py", line 72, in __init__
+    self.start_session(desired_capabilities, browser_profile)
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/webdriver.py", line 114, in start_session
+    'desiredCapabilities': desired_capabilities,
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/webdriver.py", line 165, in execute
+    self.error_handler.check_response(response)
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/errorhandler.py", line 164, in check_response
+    raise exception_class(message, screen, stacktrace)
+WebDriverException: Message: u'Error forwarding the new session cannot find : {platform=iexplore, browserName=8}' ; Stacktrace: 
+    at org.openqa.grid.web.servlet.handler.RequestHandler.process (RequestHandler.java:112)
+    at org.openqa.grid.web.servlet.DriverServlet.process (DriverServlet.java:84)
+    at org.openqa.grid.web.servlet.DriverServlet.doPost (DriverServlet.java:68)
+    at javax.servlet.http.HttpServlet.service (HttpServlet.java:727)
+    at javax.servlet.http.HttpServlet.service (HttpServlet.java:820)
+    at org.seleniumhq.jetty7.servlet.ServletHolder.handle (ServletHolder.java:565)
+    at org.seleniumhq.jetty7.servlet.ServletHandler.doHandle (ServletHandler.java:479)
+    at org.seleniumhq.jetty7.server.session.SessionHandler.doHandle (SessionHandler.java:225)
+    at org.seleniumhq.jetty7.server.handler.ContextHandler.doHandle (ContextHandler.java:1031)
+    at org.seleniumhq.jetty7.servlet.ServletHandler.doScope (ServletHandler.java:406)
+    at org.seleniumhq.jetty7.server.session.SessionHandler.doScope (SessionHandler.java:186)
+    at org.seleniumhq.jetty7.server.handler.ContextHandler.doScope (ContextHandler.java:965)
+    at org.seleniumhq.jetty7.server.handler.ScopedHandler.handle (ScopedHandler.java:117)
+    at org.seleniumhq.jetty7.server.handler.HandlerWrapper.handle (HandlerWrapper.java:111)
+    at org.seleniumhq.jetty7.server.Server.handle (Server.java:349)
+    at org.seleniumhq.jetty7.server.AbstractHttpConnection.handleRequest (AbstractHttpConnection.java:452)
+    at org.seleniumhq.jetty7.server.BlockingHttpConnection.handleRequest (BlockingHttpConnection.java:47)
+    at org.seleniumhq.jetty7.server.AbstractHttpConnection.content (AbstractHttpConnection.java:894)
+    at org.seleniumhq.jetty7.server.AbstractHttpConnection$RequestHandler.content (AbstractHttpConnection.java:948)
+    at org.seleniumhq.jetty7.http.HttpParser.parseNext (HttpParser.java:857)
+    at org.seleniumhq.jetty7.http.HttpParser.parseAvailable (HttpParser.java:235)
+    at org.seleniumhq.jetty7.server.BlockingHttpConnection.handle (BlockingHttpConnection.java:66)
+    at org.seleniumhq.jetty7.server.bio.SocketConnector$ConnectorEndPoint.run (SocketConnector.java:254)
+    at org.seleniumhq.jetty7.util.thread.QueuedThreadPool.runJob (QueuedThreadPool.java:599)
+    at org.seleniumhq.jetty7.util.thread.QueuedThreadPool$3.run (QueuedThreadPool.java:534)
+    at java.lang.Thread.run (Thread.java:695) 
+
+----------------------------------------------------------------------
+Ran 1 test in 0.010s
+
+FAILED (errors=1)
+E
+======================================================================
+ERROR: test_book_reading (__main__.JapaneseContentReader)
+Runs the book reading test for Tar Heel Reader
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "readJapaneseContent.py", line 18, in setUp
+    self._browser = webdriver.Remote(desired_capabilities = {"platform": param[2],"browserName": param[3]})
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/webdriver.py", line 72, in __init__
+    self.start_session(desired_capabilities, browser_profile)
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/webdriver.py", line 114, in start_session
+    'desiredCapabilities': desired_capabilities,
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/webdriver.py", line 165, in execute
+    self.error_handler.check_response(response)
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/errorhandler.py", line 164, in check_response
+    raise exception_class(message, screen, stacktrace)
+WebDriverException: Message: u'Error forwarding the new session cannot find : {platform=iexplore, browserName=10}' ; Stacktrace: 
+    at org.openqa.grid.web.servlet.handler.RequestHandler.process (RequestHandler.java:112)
+    at org.openqa.grid.web.servlet.DriverServlet.process (DriverServlet.java:84)
+    at org.openqa.grid.web.servlet.DriverServlet.doPost (DriverServlet.java:68)
+    at javax.servlet.http.HttpServlet.service (HttpServlet.java:727)
+    at javax.servlet.http.HttpServlet.service (HttpServlet.java:820)
+    at org.seleniumhq.jetty7.servlet.ServletHolder.handle (ServletHolder.java:565)
+    at org.seleniumhq.jetty7.servlet.ServletHandler.doHandle (ServletHandler.java:479)
+    at org.seleniumhq.jetty7.server.session.SessionHandler.doHandle (SessionHandler.java:225)
+    at org.seleniumhq.jetty7.server.handler.ContextHandler.doHandle (ContextHandler.java:1031)
+    at org.seleniumhq.jetty7.servlet.ServletHandler.doScope (ServletHandler.java:406)
+    at org.seleniumhq.jetty7.server.session.SessionHandler.doScope (SessionHandler.java:186)
+    at org.seleniumhq.jetty7.server.handler.ContextHandler.doScope (ContextHandler.java:965)
+    at org.seleniumhq.jetty7.server.handler.ScopedHandler.handle (ScopedHandler.java:117)
+    at org.seleniumhq.jetty7.server.handler.HandlerWrapper.handle (HandlerWrapper.java:111)
+    at org.seleniumhq.jetty7.server.Server.handle (Server.java:349)
+    at org.seleniumhq.jetty7.server.AbstractHttpConnection.handleRequest (AbstractHttpConnection.java:452)
+    at org.seleniumhq.jetty7.server.BlockingHttpConnection.handleRequest (BlockingHttpConnection.java:47)
+    at org.seleniumhq.jetty7.server.AbstractHttpConnection.content (AbstractHttpConnection.java:894)
+    at org.seleniumhq.jetty7.server.AbstractHttpConnection$RequestHandler.content (AbstractHttpConnection.java:948)
+    at org.seleniumhq.jetty7.http.HttpParser.parseNext (HttpParser.java:857)
+    at org.seleniumhq.jetty7.http.HttpParser.parseAvailable (HttpParser.java:235)
+    at org.seleniumhq.jetty7.server.BlockingHttpConnection.handle (BlockingHttpConnection.java:66)
+    at org.seleniumhq.jetty7.server.bio.SocketConnector$ConnectorEndPoint.run (SocketConnector.java:254)
+    at org.seleniumhq.jetty7.util.thread.QueuedThreadPool.runJob (QueuedThreadPool.java:599)
+    at org.seleniumhq.jetty7.util.thread.QueuedThreadPool$3.run (QueuedThreadPool.java:534)
+    at java.lang.Thread.run (Thread.java:695) 
+
+----------------------------------------------------------------------
+Ran 1 test in 0.009s
+
+FAILED (errors=1)
+Traceback (most recent call last):
+  File "captureNewPics.py", line 131, in <module>
+    param.append(sys.argv[3])
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "captureNewPics.py", line 131, in <module>
+    param.append(sys.argv[3])
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "captureNewPics.py", line 131, in <module>
+    param.append(sys.argv[3])
+IndexError: list index out of range
+E
+======================================================================
+ERROR: test_screenShot (__main__.screenshot)
+Runs the book searching test for Tar Heel Reader
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "captureNewPics.py", line 19, in setUp
+    self._browser = webdriver.Remote(desired_capabilities = {"platform": param[2],"browserName": param[3]})
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/webdriver.py", line 72, in __init__
+    self.start_session(desired_capabilities, browser_profile)
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/webdriver.py", line 114, in start_session
+    'desiredCapabilities': desired_capabilities,
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/webdriver.py", line 165, in execute
+    self.error_handler.check_response(response)
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/errorhandler.py", line 164, in check_response
+    raise exception_class(message, screen, stacktrace)
+WebDriverException: Message: u'Error forwarding the new session cannot find : {platform=iexplore, browserName=8}' ; Stacktrace: 
+    at org.openqa.grid.web.servlet.handler.RequestHandler.process (RequestHandler.java:112)
+    at org.openqa.grid.web.servlet.DriverServlet.process (DriverServlet.java:84)
+    at org.openqa.grid.web.servlet.DriverServlet.doPost (DriverServlet.java:68)
+    at javax.servlet.http.HttpServlet.service (HttpServlet.java:727)
+    at javax.servlet.http.HttpServlet.service (HttpServlet.java:820)
+    at org.seleniumhq.jetty7.servlet.ServletHolder.handle (ServletHolder.java:565)
+    at org.seleniumhq.jetty7.servlet.ServletHandler.doHandle (ServletHandler.java:479)
+    at org.seleniumhq.jetty7.server.session.SessionHandler.doHandle (SessionHandler.java:225)
+    at org.seleniumhq.jetty7.server.handler.ContextHandler.doHandle (ContextHandler.java:1031)
+    at org.seleniumhq.jetty7.servlet.ServletHandler.doScope (ServletHandler.java:406)
+    at org.seleniumhq.jetty7.server.session.SessionHandler.doScope (SessionHandler.java:186)
+    at org.seleniumhq.jetty7.server.handler.ContextHandler.doScope (ContextHandler.java:965)
+    at org.seleniumhq.jetty7.server.handler.ScopedHandler.handle (ScopedHandler.java:117)
+    at org.seleniumhq.jetty7.server.handler.HandlerWrapper.handle (HandlerWrapper.java:111)
+    at org.seleniumhq.jetty7.server.Server.handle (Server.java:349)
+    at org.seleniumhq.jetty7.server.AbstractHttpConnection.handleRequest (AbstractHttpConnection.java:452)
+    at org.seleniumhq.jetty7.server.BlockingHttpConnection.handleRequest (BlockingHttpConnection.java:47)
+    at org.seleniumhq.jetty7.server.AbstractHttpConnection.content (AbstractHttpConnection.java:894)
+    at org.seleniumhq.jetty7.server.AbstractHttpConnection$RequestHandler.content (AbstractHttpConnection.java:948)
+    at org.seleniumhq.jetty7.http.HttpParser.parseNext (HttpParser.java:857)
+    at org.seleniumhq.jetty7.http.HttpParser.parseAvailable (HttpParser.java:235)
+    at org.seleniumhq.jetty7.server.BlockingHttpConnection.handle (BlockingHttpConnection.java:66)
+    at org.seleniumhq.jetty7.server.bio.SocketConnector$ConnectorEndPoint.run (SocketConnector.java:254)
+    at org.seleniumhq.jetty7.util.thread.QueuedThreadPool.runJob (QueuedThreadPool.java:599)
+    at org.seleniumhq.jetty7.util.thread.QueuedThreadPool$3.run (QueuedThreadPool.java:534)
+    at java.lang.Thread.run (Thread.java:695) 
+
+----------------------------------------------------------------------
+Ran 1 test in 0.011s
+
+FAILED (errors=1)
+E
+======================================================================
+ERROR: test_screenShot (__main__.screenshot)
+Runs the book searching test for Tar Heel Reader
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "captureNewPics.py", line 19, in setUp
+    self._browser = webdriver.Remote(desired_capabilities = {"platform": param[2],"browserName": param[3]})
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/webdriver.py", line 72, in __init__
+    self.start_session(desired_capabilities, browser_profile)
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/webdriver.py", line 114, in start_session
+    'desiredCapabilities': desired_capabilities,
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/webdriver.py", line 165, in execute
+    self.error_handler.check_response(response)
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/errorhandler.py", line 164, in check_response
+    raise exception_class(message, screen, stacktrace)
+WebDriverException: Message: u'Error forwarding the new session cannot find : {platform=iexplore, browserName=10}' ; Stacktrace: 
+    at org.openqa.grid.web.servlet.handler.RequestHandler.process (RequestHandler.java:112)
+    at org.openqa.grid.web.servlet.DriverServlet.process (DriverServlet.java:84)
+    at org.openqa.grid.web.servlet.DriverServlet.doPost (DriverServlet.java:68)
+    at javax.servlet.http.HttpServlet.service (HttpServlet.java:727)
+    at javax.servlet.http.HttpServlet.service (HttpServlet.java:820)
+    at org.seleniumhq.jetty7.servlet.ServletHolder.handle (ServletHolder.java:565)
+    at org.seleniumhq.jetty7.servlet.ServletHandler.doHandle (ServletHandler.java:479)
+    at org.seleniumhq.jetty7.server.session.SessionHandler.doHandle (SessionHandler.java:225)
+    at org.seleniumhq.jetty7.server.handler.ContextHandler.doHandle (ContextHandler.java:1031)
+    at org.seleniumhq.jetty7.servlet.ServletHandler.doScope (ServletHandler.java:406)
+    at org.seleniumhq.jetty7.server.session.SessionHandler.doScope (SessionHandler.java:186)
+    at org.seleniumhq.jetty7.server.handler.ContextHandler.doScope (ContextHandler.java:965)
+    at org.seleniumhq.jetty7.server.handler.ScopedHandler.handle (ScopedHandler.java:117)
+    at org.seleniumhq.jetty7.server.handler.HandlerWrapper.handle (HandlerWrapper.java:111)
+    at org.seleniumhq.jetty7.server.Server.handle (Server.java:349)
+    at org.seleniumhq.jetty7.server.AbstractHttpConnection.handleRequest (AbstractHttpConnection.java:452)
+    at org.seleniumhq.jetty7.server.BlockingHttpConnection.handleRequest (BlockingHttpConnection.java:47)
+    at org.seleniumhq.jetty7.server.AbstractHttpConnection.content (AbstractHttpConnection.java:894)
+    at org.seleniumhq.jetty7.server.AbstractHttpConnection$RequestHandler.content (AbstractHttpConnection.java:948)
+    at org.seleniumhq.jetty7.http.HttpParser.parseNext (HttpParser.java:857)
+    at org.seleniumhq.jetty7.http.HttpParser.parseAvailable (HttpParser.java:235)
+    at org.seleniumhq.jetty7.server.BlockingHttpConnection.handle (BlockingHttpConnection.java:66)
+    at org.seleniumhq.jetty7.server.bio.SocketConnector$ConnectorEndPoint.run (SocketConnector.java:254)
+    at org.seleniumhq.jetty7.util.thread.QueuedThreadPool.runJob (QueuedThreadPool.java:599)
+    at org.seleniumhq.jetty7.util.thread.QueuedThreadPool$3.run (QueuedThreadPool.java:534)
+    at java.lang.Thread.run (Thread.java:695) 
+
+----------------------------------------------------------------------
+Ran 1 test in 0.008s
+
+FAILED (errors=1)
+E
+======================================================================
+ERROR: test_compareMacSafari (__main__.imageComparison)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "imageComparison.py", line 111, in test_compareMacSafari
+    compareMacSafari(self.name,self.url)
+  File "imageComparison.py", line 14, in compareMacSafari
+    result += (compare(f1,f2))
+  File "imageComparison.py", line 89, in compare
+    h1=Image.open(file1).histogram()
+  File "/Library/Python/2.7/site-packages/PIL-1.1.7-py2.7-macosx-10.8-intel.egg/Image.py", line 1952, in open
+    fp = __builtin__.open(fp, "rb")
+IOError: [Errno 2] No such file or directory: 'images/MAC/base/MAC/safari/page2.png'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (errors=1)
+E
+======================================================================
+ERROR: test_compareMacSafari (__main__.imageComparison)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "imageComparison.py", line 111, in test_compareMacSafari
+    compareMacSafari(self.name,self.url)
+  File "imageComparison.py", line 14, in compareMacSafari
+    result += (compare(f1,f2))
+  File "imageComparison.py", line 89, in compare
+    h1=Image.open(file1).histogram()
+  File "/Library/Python/2.7/site-packages/PIL-1.1.7-py2.7-macosx-10.8-intel.egg/Image.py", line 1952, in open
+    fp = __builtin__.open(fp, "rb")
+IOError: [Errno 2] No such file or directory: 'images/WINDOWS/base/MAC/safari/page2.png'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (errors=1)
+E
+======================================================================
+ERROR: test_compareMacSafari (__main__.imageComparison)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "imageComparison.py", line 111, in test_compareMacSafari
+    compareMacSafari(self.name,self.url)
+  File "imageComparison.py", line 14, in compareMacSafari
+    result += (compare(f1,f2))
+  File "imageComparison.py", line 89, in compare
+    h1=Image.open(file1).histogram()
+  File "/Library/Python/2.7/site-packages/PIL-1.1.7-py2.7-macosx-10.8-intel.egg/Image.py", line 1952, in open
+    fp = __builtin__.open(fp, "rb")
+IOError: [Errno 2] No such file or directory: 'images/MAC/base/MAC/safari/page2.png'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (errors=1)
+E
+======================================================================
+EERROR: test_compareMacSafari (__main__.imageComparison)
+----------------------------------------------------------------------
+
+raceback (most recent call last):
+  File "imageComparison.py", line 111, in test_compareMacSafari
+    compareMacSafari(self.name,self.url)
+  File "imageComparison.py", line 14, in compareMacSafari
+    result += (compare(f1,f2))
+  File "imageComparison.py", line 89, in compare
+    h1=Image.open(file1).histogram()
+  File "/Library/Python/2.7/site-packages/PIL-1.1.7-py2.7-macosx-10.8-intel.egg/Image.py", line 1952, in open
+    fp = __builtin__.open(fp, "rb")
+IOError: [Errno 2] No such file or directory: 'images/MAC/base/MAC/safari/page2.png'
+ 
+----------------------------------------------------------------------                                                                      
+ Ran 1 test in 0.001s
+
+RROR: test_compareMacSafari (__main__.imageComparison) FAILED ----------------------------------------------------------------------
+(errors=1) 
+Traceback (most recent call last):
+  File "imageComparison.py", line 111, in test_compareMacSafari
+    compareMacSafari(self.name,self.url)
+  File "imageComparison.py", line 14, in compareMacSafari
+    result += (compare(f1,f2))
+  File "imageComparison.py", line 89, in compare
+    h1=Image.open(file1).histogram()
+  File "/Library/Python/2.7/site-packages/PIL-1.1.7-py2.7-macosx-10.8-intel.egg/Image.py", line 1952, in open
+    fp = __builtin__.open(fp, "rb")
+IOError: [Errno 2] No such file or directory: 'images/WINDOWS/base/MAC/safari/page2.png'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (errors=1)
+python: can't open file 'bookContent.py': [Errno 2] No such file or directory
+python: can't open file 'bookContent.py': [Errno 2] No such file or directory
+python: can't open file 'bookContent.py': [Errno 2] No such file or directory
+python: can't open file 'bookContent.py': [Errno 2] No such file or directory
+python: can't open file 'bookContent.py': [Errno 2] No such file or directory
+.
+----------------------------------------------------------------------
+Ran 1 test in 2.023s
+
+OK
+rgba(255, 0, 255, 1)
+background color values are equal
+
+Test: backgroundColor.py
+Platform: MAC
+Browser: safari
+E.
+----------------------------------------------------------------------
+Ran 1 test in 3.665s
+
+OK
+#f0f
+background color values are not equal
+
+Test: backgroundColor.py
+Platform: WINDOWS
+Browser: iexplore
+Version: 8
+
+======================================================================
+ERROR: test_background_color (__main__.testBackgroundColor)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "backgroundColor.py", line 38, in test_background_color
+    pageColor.click()
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/webelement.py", line 54, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/webelement.py", line 228, in _execute
+    return self._parent.execute(command, params)
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/webdriver.py", line 165, in execute
+    self.error_handler.check_response(response)
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/errorhandler.py", line 164, in check_response
+    raise exception_class(message, screen, stacktrace)
+WebDriverException: Message: u'unknown error: Element is not clickable at point (642, 159). Other element would receive the click: <h1 class="title VOSay" data-id="120456" tabindex="-1">...</h1>\n  (Session info: chrome=31.0.1650.63)\n  (Driver info: chromedriver=2.4.226086,platform=Mac OS X 10.8.5 x86_64) (WARNING: The server did not provide any stacktrace information)\nCommand duration or timeout: 46 milliseconds\nBuild info: version: \'2.35.0\', revision: \'c916b9d\', time: \'2013-08-12 15:42:01\'\nSystem info: os.name: \'Mac OS X\', os.arch: \'x86_64\', os.version: \'10.8.5\', java.version: \'1.6.0_65\'\nSession ID: 9153abd76f3043d30b18567148c28b0e\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCapabilities [{platform=MAC, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, chrome={chromedriverVersion=2.4.226086}, rotatable=false, locationContextEnabled=true, version=31.0.1650.63, cssSelectorsEnabled=true, databaseEnabled=true, handlesAlerts=true, browserConnectionEnabled=false, nativeEvents=true, webStorageEnabled=true, applicationCacheEnabled=false, takesScreenshot=true}]' ; Screenshot: available via screen ; Stacktrace: 
+    at sun.reflect.NativeConstructorAccessorImpl.newInstance0 (NativeConstructorAccessorImpl.java:-2)
+    at sun.reflect.NativeConstructorAccessorImpl.newInstance (NativeConstructorAccessorImpl.java:39)
+    at sun.reflect.DelegatingConstructorAccessorImpl.newInstance (DelegatingConstructorAccessorImpl.java:27)
+    at java.lang.reflect.Constructor.newInstance (Constructor.java:513)
+    at org.openqa.selenium.remote.ErrorHandler.createThrowable (ErrorHandler.java:191)
+    at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed (ErrorHandler.java:145)
+    at org.openqa.selenium.remote.RemoteWebDriver.execute (RemoteWebDriver.java:554)
+    at org.openqa.selenium.remote.RemoteWebElement.execute (RemoteWebElement.java:268)
+    at org.openqa.selenium.remote.RemoteWebElement.click (RemoteWebElement.java:79)
+    at sun.reflect.GeneratedMethodAccessor20.invoke (None:-1)
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:25)
+    at java.lang.reflect.Method.invoke (Method.java:597)
+    at org.openqa.selenium.support.events.EventFiringWebDriver$EventFiringWebElement$1.invoke (EventFiringWebDriver.java:327)
+    at com.sun.proxy.$Proxy2.click (None:-1)
+    at org.openqa.selenium.support.events.EventFiringWebDriver$EventFiringWebElement.click (EventFiringWebDriver.java:340)
+    at sun.reflect.GeneratedMethodAccessor20.invoke (None:-1)
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:25)
+    at java.lang.reflect.Method.invoke (Method.java:597)
+    at org.openqa.selenium.remote.server.KnownElements$1.invoke (KnownElements.java:63)
+    at com.sun.proxy.$Proxy3.click (None:-1)
+    at org.openqa.selenium.remote.server.handler.ClickElement.call (ClickElement.java:29)
+    at org.openqa.selenium.remote.server.handler.ClickElement.call (ClickElement.java:1)
+    at java.util.concurrent.FutureTask$Sync.innerRun (FutureTask.java:303)
+    at java.util.concurrent.FutureTask.run (FutureTask.java:138)
+    at org.openqa.selenium.remote.server.DefaultSession$1.run (DefaultSession.java:169)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.runTask (ThreadPoolExecutor.java:895)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:918)
+    at java.lang.Thread.run (Thread.java:695) 
+
+----------------------------------------------------------------------
+Ran 1 test in 3.703s
+
+FAILED (errors=1)
+
+Test: backgroundColor.py
+Platform: MAC
+Browser: chrome
+.
+----------------------------------------------------------------------
+Ran 1 test in 4.027s
+
+OK
+rgba(255, 0, 255, 1)
+background color values are equal
+
+Test: backgroundColor.py
+Platform: MAC
+Browser: firefox
+.
+----------------------------------------------------------------------
+Ran 1 test in 7.174s
+
+OK
+rgba(255, 0, 255, 1)
+background color values are equal
+
+Test: backgroundColor.py
+Platform: WINDOWS
+Browser: iexplore
+Version: 10
+Traceback (most recent call last):
+  File "textColor.py", line 67, in <module>
+    param.append(sys.argv[3])
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "textColor.py", line 67, in <module>
+    param.append(sys.argv[3])
+IndexError: list index out of range
+E
+======================================================================
+ERROR: test_text_color (__main__.testTextColor)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "textColor.py", line 16, in setUp
+    self._browser = webdriver.Remote(desired_capabilities = {"platform": param[2],"browserName": param[3]})
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/webdriver.py", line 72, in __init__
+    self.start_session(desired_capabilities, browser_profile)
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/webdriver.py", line 114, in start_session
+    'desiredCapabilities': desired_capabilities,
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/webdriver.py", line 165, in execute
+    self.error_handler.check_response(response)
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/errorhandler.py", line 164, in check_response
+    raise exception_class(message, screen, stacktrace)
+WebDriverException: Message: u'Error forwarding the new session cannot find : {platform=iexplore, browserName=8}' ; Stacktrace: 
+    at org.openqa.grid.web.servlet.handler.RequestHandler.process (RequestHandler.java:112)
+    at org.openqa.grid.web.servlet.DriverServlet.process (DriverServlet.java:84)
+    at org.openqa.grid.web.servlet.DriverServlet.doPost (DriverServlet.java:68)
+    at javax.servlet.http.HttpServlet.service (HttpServlet.java:727)
+    at javax.servlet.http.HttpServlet.service (HttpServlet.java:820)
+    at org.seleniumhq.jetty7.servlet.ServletHolder.handle (ServletHolder.java:565)
+    at org.seleniumhq.jetty7.servlet.ServletHandler.doHandle (ServletHandler.java:479)
+    at org.seleniumhq.jetty7.server.session.SessionHandler.doHandle (SessionHandler.java:225)
+    at org.seleniumhq.jetty7.server.handler.ContextHandler.doHandle (ContextHandler.java:1031)
+    at org.seleniumhq.jetty7.servlet.ServletHandler.doScope (ServletHandler.java:406)
+    at org.seleniumhq.jetty7.server.session.SessionHandler.doScope (SessionHandler.java:186)
+    at org.seleniumhq.jetty7.server.handler.ContextHandler.doScope (ContextHandler.java:965)
+    at org.seleniumhq.jetty7.server.handler.ScopedHandler.handle (ScopedHandler.java:117)
+    at org.seleniumhq.jetty7.server.handler.HandlerWrapper.handle (HandlerWrapper.java:111)
+    at org.seleniumhq.jetty7.server.Server.handle (Server.java:349)
+    at org.seleniumhq.jetty7.server.AbstractHttpConnection.handleRequest (AbstractHttpConnection.java:452)
+    at org.seleniumhq.jetty7.server.BlockingHttpConnection.handleRequest (BlockingHttpConnection.java:47)
+    at org.seleniumhq.jetty7.server.AbstractHttpConnection.content (AbstractHttpConnection.java:894)
+    at org.seleniumhq.jetty7.server.AbstractHttpConnection$RequestHandler.content (AbstractHttpConnection.java:948)
+    at org.seleniumhq.jetty7.http.HttpParser.parseNext (HttpParser.java:857)
+    at org.seleniumhq.jetty7.http.HttpParser.parseAvailable (HttpParser.java:235)
+    at org.seleniumhq.jetty7.server.BlockingHttpConnection.handle (BlockingHttpConnection.java:66)
+    at org.seleniumhq.jetty7.server.bio.SocketConnector$ConnectorEndPoint.run (SocketConnector.java:254)
+    at org.seleniumhq.jetty7.util.thread.QueuedThreadPool.runJob (QueuedThreadPool.java:599)
+    at org.seleniumhq.jetty7.util.thread.QueuedThreadPool$3.run (QueuedThreadPool.java:534)
+    at java.lang.Thread.run (Thread.java:695) 
+
+----------------------------------------------------------------------
+Ran 1 test in 0.010s
+
+FAILED (errors=1)
+Traceback (most recent call last):
+  File "textColor.py", line 67, in <module>
+    param.append(sys.argv[3])
+IndexError: list index out of range
+E
+======================================================================
+ERROR: test_text_color (__main__.testTextColor)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "textColor.py", line 16, in setUp
+    self._browser = webdriver.Remote(desired_capabilities = {"platform": param[2],"browserName": param[3]})
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/webdriver.py", line 72, in __init__
+    self.start_session(desired_capabilities, browser_profile)
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/webdriver.py", line 114, in start_session
+    'desiredCapabilities': desired_capabilities,
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/webdriver.py", line 165, in execute
+    self.error_handler.check_response(response)
+  File "/Library/Python/2.7/site-packages/selenium-2.35.0-py2.7.egg/selenium/webdriver/remote/errorhandler.py", line 164, in check_response
+    raise exception_class(message, screen, stacktrace)
+WebDriverException: Message: u'Error forwarding the new session cannot find : {platform=iexplore, browserName=10}' ; Stacktrace: 
+    at org.openqa.grid.web.servlet.handler.RequestHandler.process (RequestHandler.java:112)
+    at org.openqa.grid.web.servlet.DriverServlet.process (DriverServlet.java:84)
+    at org.openqa.grid.web.servlet.DriverServlet.doPost (DriverServlet.java:68)
+    at javax.servlet.http.HttpServlet.service (HttpServlet.java:727)
+    at javax.servlet.http.HttpServlet.service (HttpServlet.java:820)
+    at org.seleniumhq.jetty7.servlet.ServletHolder.handle (ServletHolder.java:565)
+    at org.seleniumhq.jetty7.servlet.ServletHandler.doHandle (ServletHandler.java:479)
+    at org.seleniumhq.jetty7.server.session.SessionHandler.doHandle (SessionHandler.java:225)
+    at org.seleniumhq.jetty7.server.handler.ContextHandler.doHandle (ContextHandler.java:1031)
+    at org.seleniumhq.jetty7.servlet.ServletHandler.doScope (ServletHandler.java:406)
+    at org.seleniumhq.jetty7.server.session.SessionHandler.doScope (SessionHandler.java:186)
+    at org.seleniumhq.jetty7.server.handler.ContextHandler.doScope (ContextHandler.java:965)
+    at org.seleniumhq.jetty7.server.handler.ScopedHandler.handle (ScopedHandler.java:117)
+    at org.seleniumhq.jetty7.server.handler.HandlerWrapper.handle (HandlerWrapper.java:111)
+    at org.seleniumhq.jetty7.server.Server.handle (Server.java:349)
+    at org.seleniumhq.jetty7.server.AbstractHttpConnection.handleRequest (AbstractHttpConnection.java:452)
+    at org.seleniumhq.jetty7.server.BlockingHttpConnection.handleRequest (BlockingHttpConnection.java:47)
+    at org.seleniumhq.jetty7.server.AbstractHttpConnection.content (AbstractHttpConnection.java:894)
+    at org.seleniumhq.jetty7.server.AbstractHttpConnection$RequestHandler.content (AbstractHttpConnection.java:948)
+    at org.seleniumhq.jetty7.http.HttpParser.parseNext (HttpParser.java:857)
+    at org.seleniumhq.jetty7.http.HttpParser.parseAvailable (HttpParser.java:235)
+    at org.seleniumhq.jetty7.server.BlockingHttpConnection.handle (BlockingHttpConnection.java:66)
+    at org.seleniumhq.jetty7.server.bio.SocketConnector$ConnectorEndPoint.run (SocketConnector.java:254)
+    at org.seleniumhq.jetty7.util.thread.QueuedThreadPool.runJob (QueuedThreadPool.java:599)
+    at org.seleniumhq.jetty7.util.thread.QueuedThreadPool$3.run (QueuedThreadPool.java:534)
+    at java.lang.Thread.run (Thread.java:695) 
+
+----------------------------------------------------------------------
+Ran 1 test in 0.010s
+
+FAILED (errors=1)

@@ -10,23 +10,23 @@ MAX_WAIT_TIME=30
 
 class ReadBook(unittest.TestCase):
     def setUp(self):
-        self.url = param[1]
+        self.url = str(param[1])
 
         if len(param) == 5:
             self._browser = webdriver.Remote(desired_capabilities = {"platform": param[2],"browserName": param[3], "version": param[4]})
         else:
-            self._browser = webdriver.Remote(desired_capabilities = {"platform": param[2],"browserName": param[3]})
-    
+            self._browser = webdriver.Remote(desired_capabilities = {"platform": param[2],"browserName": param[3]}) 
             
-    def test_readBook(self):
+    def testReadBook(self):
         """Runs the book reading test for Tar Heel Reader
         PRE: Already at title page of book being read
         POST: Entire book has been read, on page where
         user chooses what he/she wants to do next"""
         #Tell the browser to only wait 3 additional seconds so can tell faster when finished reading
-        self.searchBook()
+        self.getToBook()
         self._browser.implicitly_wait(1.0)
-
+	previousURL=self._browser.current_url
+	print previousURL
         #Read one page at a time of current book
         while(True):
             try:
@@ -37,24 +37,25 @@ class ReadBook(unittest.TestCase):
 
                 nextPageLink=self._browser.find_element_by_link_text("Next")
                 nextPageLink.click()
+		if(previousURL==self._browser.current_url):
+			assert 0, "next page button didn't work!"
+
+		previousURL=self._browser.current_url
 
             except NoSuchElementException:
                 assert 0, "error reading book"
-#                print "error reading book"
-#                break
+                break
                 
-    def searchBook(self):
-        """goes directly to a test book
-		"""
-
-		#Load home page of Tar Heel Reader
+    def getToBook(self):
+        """Goes directly to a test book, which depends on the server being tested
+	"""
         if self.url in "http://gbserver3.cs.unc.edu/2011/11/14/the-frog-prince-2/":
             self._browser.get("http://gbserver3.cs.unc.edu/2011/02/28/mice-like-to-play-and-hide/")
         else:
             self._browser.get("http://tarheelreader.org/2013/11/18/tarheelreadertestbook/")
-        assert "Tar Heel Reader" in self._browser.title
+        
+	assert "Tar Heel Reader" in self._browser.title
     
-               
     def tearDown(self):
         time.sleep(5.0)
         if len(param) == 5:
