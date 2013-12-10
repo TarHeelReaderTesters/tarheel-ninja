@@ -56,7 +56,6 @@ class testBackgroundColor(unittest.TestCase):
 
                 rgb = browser.find_element_by_xpath("//div[contains(@class,'thr-book-page')]").value_of_css_property('background-color')
            
-                print rgb
                 if rgb == "rgba(255, 0, 255, 1)" or "#f0f":
                         print "text color values are equal"
 

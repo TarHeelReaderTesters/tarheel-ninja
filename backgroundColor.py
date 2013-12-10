@@ -33,7 +33,8 @@ class testBackgroundColor(unittest.TestCase):
                 settings = browser.find_element_by_xpath("//img[contains(@src,'images/settings.png')]")# Find the settings menu
                 WebDriverWait(browser, MAX_WAIT_TIME).until(lambda s: s.find_element_by_xpath("//img[contains(@src,'images/settings.png')]").is_displayed())
                 settings.click()
-                settings.click()
+                if "gbserver3" in self._url:
+                    settings.click()
                 
                 WebDriverWait(browser, MAX_WAIT_TIME).until(lambda s: s.find_element_by_xpath("//img[contains(@src,'images/settings.png')]").is_displayed())
                
@@ -53,8 +54,6 @@ class testBackgroundColor(unittest.TestCase):
 
 
                 rgb = browser.find_element_by_xpath("//div[contains(@class,'thr-book-page')]").value_of_css_property('background-color')
-           
-                print rgb
                 if rgb == "rgba(255, 0, 255, 1)" or "#f0f":
                         print "background color values are equal"
 

@@ -3,14 +3,14 @@ import time
 import os.path
 import sys
 
-processes = []
 
-if(len(sys.argv)!=2):
-        print "Invalid number of parameters!"
-        print "Format is: %s <url>" % (sys.argv[0],)
-	sys.exit(1)
 
+
+
+
+    
 url = str(sys.argv[1])
+script = str(sys.argv[2])
 
 #name the logfile using current date
 log = 'log/thrt_' + time.strftime('%d%m%y-00')
@@ -31,28 +31,24 @@ while(os.path.exists(log)):
 #open file
 file = open(log, 'w')
 
-#add scripts to run in parallel
+processes = []
+scriptNames = [ "login.py", "searchBook.py", "readBook.py", "mainMenu.py", "captureNewPics.py"] #,"bookContentReader.py","backgroundColor.py"]
+#more scripts: "login.py", "searchBook.py","mainMenu.py","login.py","imageComparison.py"
+#for script in scriptNames:
+print 'Starting tests on script: ' + script
+if script == "login.py":
+#login.py has extra parameters
+    script="login.py "+url+" tarheelreadertesters 40m4h99"
+    url=""
+#Mac scripts
+processes.append(Popen ('python ' + script + ' ' + url +' MAC firefox',stdout=file, stderr=file, shell=True))
+processes.append(Popen ('python ' + script + ' ' + url +' MAC chrome',stdout=file, stderr=file, shell=True))
+processes.append(Popen ('python ' + script + ' ' + url +' MAC safari',stdout=file, stderr=file, shell=True))
+#Windows scripts
+processes.append(Popen ('python ' + script + ' ' + url +' WINDOWS iexplore 8',stdout=file, stderr=file, shell=True))
+processes.append(Popen ('python ' + script + ' ' + url +' WINDOWS iexplore 10',stdout=file, stderr=file, shell=True))
 
-def scripts():
-    global processes, url
-    scriptNames = ["searchBook.py","mainMenu.py","login.py", "readBook.py", "readJapaneseContent.py", "captureNewPics.py", "imageComparison.py","bookContentReader.py","backgroundColor.py", "textColor.py"]
-    for script in scriptNames:
-            print 'Starting tests on script: ' + script
-            if script == "login.py":
-            #login.py has extra parameters
-                script="login.py "+url+" tarheelreadertesters 40m4h99"
-                url=""
-            #Mac scripts
-            processes.append(Popen ('python '+script+' '+url+' MAC firefox',stdout=file, stderr=file, shell=True))
-            processes.append(Popen ('python '+script+' '+url+' MAC chrome',stdout=file, stderr=file, shell=True))
-            processes.append(Popen ('python '+script+' '+url+' MAC safari',stdout=file, stderr=file, shell=True))
-            #Windows scripts
-            processes.append(Popen ('python '+script+' '+url+' WINDOWS iexplore 8',stdout=file, stderr=file, shell=True))
-            processes.append(Popen ('python '+script+' '+url+' WINDOWS iexplore 10',stdout=file, stderr=file, shell=True))
 
-            for subprocess in processes:
-                    subprocess.wait()
-            processes = []
+for subprocess in processes:
+    subprocess.wait()
 
-if __name__ == '__main__':
-    scripts()

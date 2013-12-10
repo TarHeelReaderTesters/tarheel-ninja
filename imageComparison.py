@@ -28,22 +28,11 @@ def compareMacFirefox(pages,url):
             break
     runMessage(f1,f2,result,pages)
 
-def compareWindowFirefox(pages,url):
+def compareMacChrome(pages,url):
     result = ''
     for p in pages:
-        f1 = 'images/'+url+'/base/WINDOWS/firefox/' + p
-        f2 = 'images/'+url+'/new/WINDOWS/firefox/' + p
-        result += (compare(f1,f2))
-        if result == 'Unable to compute image difference':
-            print result
-            break
-    runMessage(f1,f2,result,pages,url)
-
-def compareWindowChrome(pages,url):
-    result = ''
-    for p in pages:
-        f1 = 'images/'+url+'/base/WINDOWS/chrome/' + p
-        f2 = 'images/'+url+'/new/WINDOWS/chrome/' + p
+        f1 = 'images/'+url+'/base/MAC/chrome/' + p
+        f2 = 'images/'+url+'/new/MAC/chrome/' + p
         result += (compare(f1,f2))
         if result == 'Unable to compute image difference':
             print result
@@ -111,13 +100,13 @@ class imageComparison(unittest.TestCase):
 
     def test_compareMacSafari(self):
         compareMacSafari(self.name,self.url)
+
+    def test_compareMacFirefox(self):
+        compareMacFirefox(self.name,self.url)
+
+    def test_compareMacChrome(self):
+        compareMacChrome(self.name,self.url)
 """
-    def test_compareWindowFirefox(self):
-        compareWindowFirefox(self.name,self.url)
-
-    def test_compareWindowChrome(self):
-        compareWindowChrome(self.name,self.url)
-
     def test_compareWindowIE10(self):
         compareWindowIE10(self.name,self.url)
 

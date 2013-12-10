@@ -50,7 +50,7 @@ class screenshot(unittest.TestCase):
                     os.makedirs('images/GBserver3/base/' + param[2])
                 if not os.path.exists('images/GBserver3/base/' + param[2] +'/' + param[3]):
                     os.makedirs('images/GBserver3/base/' + param[2] +'/' + param[3])
-            print self.url
+            
         
         
             url = ['http://gbserver3.cs.unc.edu/2011/02/28/mice-like-to-play-and-hide/','http://gbserver3.cs.unc.edu/2011/02/28/mice-like-to-play-and-hide/2/' , 'http://gbserver3.cs.unc.edu/2011/02/28/mice-like-to-play-and-hide/3/' , 'http://gbserver3.cs.unc.edu/2011/02/28/mice-like-to-play-and-hide/4/', 'http://gbserver3.cs.unc.edu/2011/02/28/mice-like-to-play-and-hide/5/', 'http://gbserver3.cs.unc.edu/2011/02/28/mice-like-to-play-and-hide/6/']
