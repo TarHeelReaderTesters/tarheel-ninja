@@ -46,39 +46,9 @@ class readBook(unittest.TestCase):
 		"""
 
 		#Load home page of Tar Heel Reader
-        self._browser.get("http://gbserver3.cs.unc.edu/")
+        self._browser.get("http://tarheelreader.org/2013/11/18/tarheelreadertestbook/")
         assert "Tar Heel Reader" in self._browser.title
-
-        #Click on find book button
-        try:
-            findButton=self._browser.find_element_by_xpath("//a[contains(@href,'/find/')]")
-            findButton.click()
-        except NoSuchElementException:
-            assert 0, "can't find find book button"
-
-        #Narrow down search options
-        self._browser.implicitly_wait(MAX_WAIT_TIME)
-        self.select_option("//select[contains(@name, 'category')]", "People and Places", "can't find category selection element")
-        self.select_option("//select[contains(@name, 'reviewed')]", "Include unreviewed", "can't find review status selection field")
-        self.select_option("//select[contains(@name, 'audience')]", "Any rating", "can't find rating selection field")
-        self.select_option("//select[contains(@name, 'language')]", "English", "can't find language selection field")
-
-        #input a value into the search field
-        try:
-            searchField=self._browser.find_element_by_xpath("//input[contains(@placeholder, 'Enter text to search')]")
-            searchField.send_keys("lake"+Keys.RETURN)
-        except NoSuchElementException:
-            assert 0, "can't find search field"
-
-        #click on first book that is found
-        try:
-            #gbserver3 does not have categorized books, so after checking the options, go to a specific book to read
-
-            self._browser.get("http://gbserver3.cs.unc.edu/2011/07/24/spiderman-6/")
-  
-        except NoSuchElementException:
-            assert 0, "can't find book to read"
-                
+    
     def select_option(self, xpath, textToFind, exceptionString):
         """Selects from an arbitrary select element on the search page.
 
@@ -105,15 +75,9 @@ class readBook(unittest.TestCase):
             
     def tearDown(self):
         time.sleep(5.0)
-        if len(param) == 4:
-            print '\nTest: ' + param[0]
-            print 'Platform: ' + param[1]
-            print 'Browser: ' + param[2]
-            print 'Version: ' + param[3]
-        else:
-            print '\nTest: ' + param[0]
-            print 'Platform: ' + param[1]
-            print 'Browser: ' + param[2]
+        print '\n Ran ' + param[0]
+        print 'Platform: ' + param[1]
+        print 'Browser: ' + param[2]
         self._browser.quit()
         
 if __name__ == '__main__':

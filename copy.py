@@ -1,2 +1,0 @@
-import Image
-import ImageChops
